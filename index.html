@@ -260,11 +260,11 @@ button.card .card-pic{cursor:pointer}
 body:not(.notes) .anno{display:none}
 
 /* ---------- hero ring ---------- */
-.hero{position:relative; display:grid; min-height:800px; place-items:center; padding-block:1rem}
+.hero{position:relative; display:grid; min-height:800px; place-items:center; padding-block:1rem .25rem}
 .hero .ring{display:block; position:absolute; inset:0; width:100%; height:100%;
   pointer-events:none; z-index:1}
 .hero-mid{display:grid; gap:1rem; max-width:480px; justify-items:center; text-align:center;
-  position:relative; z-index:3; grid-row:1; grid-column:1}
+  position:relative; z-index:3; grid-row:1; grid-column:1; margin-top:2.75rem}
 .hero-mid p{color:var(--ink-2); font-weight:400}
 .pipe{display:grid; justify-items:center; gap:.15rem; width:100%}
 .pipe3d{width:72px; height:72px; object-fit:contain; pointer-events:none;
@@ -414,19 +414,19 @@ tr.hl td{background:var(--acc-soft)}
 .shipband{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
   align-items:stretch; border:1px solid var(--line); border-radius:22px;
   background:var(--frame); overflow:hidden; box-shadow:var(--lift)}
-.shipband-copy{padding:2rem 2.1rem}
+.shipband-copy{padding:2rem 2.1rem 2rem}
 #shipband{scroll-margin-top:4.5rem}
 .shipband-copy h3{font-size:1.45rem; line-height:1.25; margin-bottom:.85rem; max-width:22ch}
 .shipband-copy ol{margin:0 0 1rem; padding-left:1.15rem; color:var(--ink-2); font-size:.9rem; line-height:1.55}
 .shipband-copy ol li{margin:.15rem 0}
 .shipband-copy ol a, .shipband-copy ol button{background:none; border:0; padding:0;
   color:var(--mint-ink); text-decoration:underline; text-underline-offset:2px; font:inherit; font-weight:600}
-.shipoks{display:flex; flex-wrap:wrap; gap:.35rem 1.1rem; font-size:.84rem; color:var(--ink-2); margin-bottom:1.1rem}
+.shipoks{display:flex; flex-wrap:wrap; gap:.35rem 1.1rem; font-size:.84rem; color:var(--ink-2); margin-bottom:2.2rem}
 .shipoks span{display:inline-flex; align-items:center; gap:.35rem}
 .shipoks i{width:16px; height:16px; border-radius:50%; background:var(--mint); color:var(--ink);
   display:grid; place-items:center; font-size:.62rem; font-style:normal; font-weight:700}
-.shipband-pic{min-height:280px; background:var(--fill-2)}
-.shipband-pic img{display:block; width:100%; height:100%; object-fit:cover}
+.shipband-pic{position:relative; min-height:280px; background:var(--fill-2)}
+.shipband-pic img{position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover}
 
 .spechead{display:grid; gap:.75rem}
 .specrail{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.85rem}
@@ -493,7 +493,7 @@ button.card:active, .specard:active{transform:scale(.97)}
   .screen[data-screen="home"] > .stack{gap:2.2rem}
   .hero{min-height:0; padding-block:0; place-items:stretch}
   .hero .ring{display:none}
-  .hero-mid{max-width:none; width:100%}
+  .hero-mid{max-width:none; width:100%; margin-top:0}
   .ringnodes{position:static; display:grid; gap:.45rem; margin-top:1.15rem}
   .ringnodes > *{position:static; width:auto}
   .pipe{grid-template-columns:44px minmax(0,1fr); justify-items:stretch; align-items:center; gap:.5rem}
@@ -643,7 +643,7 @@ button.card:active, .specard:active{transform:scale(.97)}
             </div>
             <div class="pipe np6" data-w>
               <img class="pipe3d" src="itya-pipe-zakaznik.png" alt="" width="144" height="144">
-              <div class="node end"><span class="ic">✓</span><span class="tx">Máš ho späť<small>so zárukou 6–12 mesiacov</small></span></div>
+              <div class="node end"><span class="ic">✓</span><span class="tx">Zariadenie máš späť<small>so zárukou 6–12 mesiacov</small></span></div>
             </div>
           </div>
         </div>
@@ -789,7 +789,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           <div class="shipband-copy" id="shipband">
             <h3>Zariadenie k nám pošleš zdarma kuriérom alebo cez Z‑BOX.</h3>
             <ol>
-              <li>Popíšeš závadu.</li>
+              <li>Popíšeš závadu tvojho zariadenia.</li>
               <li>Zvolíš Z‑BOX, alebo zvoz z tvojej adresy.</li>
               <li>Zabalíš ho. Pri Z‑BOXe vhodíš s kódom, ktorý ti dáme; pri kuriérovi sa telefonicky dohodneme na čase zvozu.</li>
             </ol>
@@ -797,7 +797,7 @@ button.card:active, .specard:active{transform:scale(.97)}
               <span><i>✓</i> Vyzdvihnutie zdarma</span>
               <span><i>✓</i> 90 % opráv do pár hodín</span>
             </div>
-            <button class="btn" data-start="packeta">Poslať zariadenie</button>
+            <button class="btn" data-start="packeta">Popísať závadu a poslať</button>
           </div>
           <div class="shipband-pic">
             <img src="itya-kurier-vans.png" alt="Kuriérska preprava zadarmo po Slovensku" width="960" height="540">
