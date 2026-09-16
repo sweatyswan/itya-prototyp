@@ -402,6 +402,7 @@ tr.hl td{background:var(--acc-soft)}
   align-items:stretch; border:1px solid var(--line); border-radius:22px;
   background:var(--frame); overflow:hidden; box-shadow:var(--lift)}
 .shipband-copy{padding:2rem 2.1rem}
+#shipband{scroll-margin-top:4.5rem}
 .shipband-copy h3{font-size:1.45rem; line-height:1.25; margin-bottom:.85rem; max-width:22ch}
 .shipband-copy ol{margin:0 0 1rem; padding-left:1.15rem; color:var(--ink-2); font-size:.9rem; line-height:1.55}
 .shipband-copy ol li{margin:.15rem 0}
@@ -543,8 +544,8 @@ button.card:active, .specard:active{transform:scale(.97)}
     <div class="sitehead">
       <img class="logo" src="itya-logo.webp" alt="itya" width="96" height="56">
       <nav class="sitenav" id="sitenav">
-        <button data-nav="servis" data-start="osobne">Servis</button>
-        <button data-nav="kurier" class="pkg" data-start="packeta">Pošli na opravu</button>
+        <button data-nav="servis" data-channel="choose" data-go="picker">Servis</button>
+        <button data-nav="kurier" class="pkg" data-scroll="shipband">Ako poslať zariadenie</button>
         <button data-nav="repasovane" data-out="repasovane">Repasované</button>
         <button data-nav="vykup" data-out="vykup">Výkup</button>
         <button data-nav="firmy" data-out="firmy">Pre firmy</button>
@@ -611,7 +612,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           </div>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 01 — proces namiesto sľubu</span><p>Slogan je H1 a zároveň rozcestník: prvá polovica hovorí, čo máte urobiť, druhá čo z toho máte. Pipeline okolo neho ukazuje, že <em>pošli</em> a <em>príď</em> sú dve cesty tým istým procesom, nie dve služby. Oblúk je zámerne otvorený — postup, nie cyklus.</p><p style="margin-top:.4rem"><em>Princíp:</em> neistotu pri neznámej službe odstraňuje viditeľný proces, nie sľub. Človek, ktorý posiela telefón za 800 € cudzím ľuďom, nerieši cenu ako prvé — rieši, čo sa s ním bude diať.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> NN/g (Budiu, 2017) odporúča zobraziť zoznam alebo diagram krokov práve pre profil <em>neskúsený používateľ, zriedkavý úkon, bez odbornej znalosti, s vetvením</em>. To je objednávka opravy telefónu doslova. Konverzné číslo k tomu neexistuje — je to argument zhodou vzoru. Nepriamo ho podopiera Chernev et al. (2015), kde je <em>neistota v preferencii</em> meraný moderátor obtiažnosti rozhodovania (b = .32).</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> čísla 35 000+, 95 % a 4,9 sú tvrdenia, ktoré ITYA dnes komunikuje na svojom webe. Do ostrej verzie patria len s doloženým zdrojom.</p></div>
+        <div class="anno"><span class="label">Poznámka 01 — Ukážeme postup, nie sľuby</span><p>Slogan je nadpis aj rozcestník. Okolo neho beží postup, ktorý ukazuje, že poslať a prísť sú dve cesty tým istým procesom. Nie dve rôzne služby.</p><p><em>Prečo:</em> Kto posiela telefón za 800 € cudzím ľuďom, nerieši najprv cenu. Rieši, čo sa s ním bude diať.</p><p><em>Podopiera to:</em> Nielsen Norman Group radí ukázať kroky vtedy, keď človek robí niečo prvýkrát, robí to zriedka a nerozumie tomu odborne. To je oprava telefónu presne. Číslo k tomu neuvádzajú — je to odporúčanie, nie meranie. (Pravidlo 7 v dokumente.)</p><p><em>Vymyslené:</em> Nič. Čísla 35 000+, 95 % a 4,9 sú tie, ktoré ITYA dnes uvádza na svojom webe.</p></div>
 
         <div class="strip">
           <span><b>35 000+</b> opravených zariadení</span>
@@ -641,7 +642,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           </div>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 02 — dôkaz tretej strany prebíja vlastné tvrdenie</span><p>Hodnotenie, počet, dve ukážky — jedna z nich štvorhviezdičková — a odkaz priamo na Google profil.</p><p style="margin-top:.4rem"><em>Princíp:</em> vlastné tvrdenie o kvalite je marketing; cudzie tvrdenie je dôkaz. Preto sa recenzie ťahajú z profilu a odkaz vedie von, nie na vlastnú podstránku.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Spiegel Research Center (Northwestern, 2017): pravdepodobnosť nákupu je pri <strong>piatich</strong> recenziách o 270 % vyššia než bez nich, prínos ďalších prudko klesá, a <strong>vrcholí pri hodnotení 4,0–4,7</strong> — čistá päťka pôsobí falošne. Odznak overeného nákupu zvyšuje šancu o 15 %. Štúdiu financoval dodávateľ recenzného systému a stojí na dátach jedného e‑shopu: je to najlepšie dostupné číslo v tejto oblasti, nie kontrolovaný experiment.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> mená, texty aj počet sú <strong>vzorové</strong> — ilustrujú formát, nie obsah. Ostré recenzie sa musia ťahať z Google profilu; počet ITYA nikde neuvádza (na stránke O nás majú „stovky pozitívnych recenzií“), takže sa doplní z profilu, nie odhadne.</p></div>
+        <div class="anno"><span class="label">Poznámka 02 — Cudzia pochvala platí viac než vlastná</span><p>Hodnotenie, počet recenzií, dve ukážky a odkaz priamo na Google profil.</p><p><em>Prečo:</em> Keď o sebe povieme, že sme dobrí, je to reklama. Keď to povie zákazník, je to dôkaz.</p><p><em>Podopiera to:</em> Výskum z Northwestern University: pri piatich recenziách je pravdepodobnosť nákupu výrazne vyššia než bez nich, ďalšie už veľa nepridajú, a najlepšie funguje hodnotenie medzi 4,0 a 4,7. Čistá päťka pôsobí falošne — preto je jedna ukážka štvorhviezdičková. (Pravidlo 8.)</p><p><em>Vymyslené:</em> Mená, texty aj počet. Naostro sa recenzie ťahajú z Google profilu a nikdy sa nepíšu.</p></div>
 
         <div>
           <h3 style="font-size:1.1rem; margin-bottom:.7rem">Čo u nás vybavíte</h3>
@@ -652,7 +653,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           </div>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 03 — v prototype nesmie byť mŕtvy odkaz</span><p>Klikateľné je všetko — tri karty aj celé horné menu. Servis ide do toku, zvyšok na stránku, ktorá povie, že tam obsah zámerne nie je.</p><p style="margin-top:.4rem"><em>Princíp:</em> nefunkčný odkaz sa v prototype nedá odlíšiť od chyby. Prázdna stránka s vysvetlením je informácia; mŕtve tlačidlo je šum, ktorý na stretnutí stiahne pozornosť z toho, čo sa práve testuje.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> analogicky k zisteniu Baymardu pri spôsoboch doručenia: keď používateľ možnosť nevidí, predpokladá, že neexistuje. To isté platí pre odkaz, ktorý nereaguje.</p></div>
+        <div class="anno"><span class="label">Poznámka 03 — Nefunkčný odkaz vyzerá ako chyba</span><p>Klikateľné je všetko — tri karty aj celé horné menu. Servis ide do toku, zvyšok na stránku, ktorá povie, že tam obsah zámerne nie je.</p><p><em>Prečo:</em> Mŕtve tlačidlo v prototype nikto neodlíši od chyby. Na stretnutí sa potom rieši ono, nie to, čo sa malo testovať.</p></div>
 
         <div class="spechead">
           <h3 style="font-size:1.1rem">Špecializovaný servis</h3>
@@ -700,7 +701,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           </div>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 20 — služby, ktoré odlišujú, potrebujú vlastnú stránku</span><p>GlassChange, mikropájkovanie, leštenie displeja, opravy po obliatí. V prototype má každá vlastnú stránku — zatiaľ prázdnu.</p><p style="margin-top:.4rem"><em>Princíp:</em> na dnešnom webe vedie päť dlaždíc z domovskej stránky na jeden spoločný výpis. Služba, ktorá nemá vlastnú URL, nemá kam privádzať dopyt a nedá sa ani odkázať v ponuke.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> GlassChange nemá ani jeden zo štyroch porovnávaných webov. Je to jediná vec v tomto projekte, ktorú konkurencia nevie skopírovať cez noc — a dnes je schovaná ako dlaždica bez cieľa.</p></div>
+        <div class="anno"><span class="label">Poznámka 20 — Čo nás odlišuje, potrebuje vlastnú stránku</span><p>GlassChange, mikropájkovanie, leštenie displeja, opravy po obliatí. V prototype má každá vlastnú stránku — zatiaľ prázdnu.</p><p><em>Prečo:</em> Dnes vedie päť dlaždíc z úvodnej stránky na jeden spoločný zoznam. Služba bez vlastnej adresy nemá kam privádzať ľudí a nedá sa ani spomenúť v reklame.</p><p><em>Podopiera to:</em> GlassChange nemá ani jeden zo štyroch porovnávaných webov. Je to jediná vec v tomto projekte, ktorú konkurencia nevie skopírovať cez noc — a dnes je schovaná ako dlaždica bez cieľa.</p></div>
 
         <div class="usps">
           <div class="usp">
@@ -749,25 +750,25 @@ button.card:active, .specard:active{transform:scale(.97)}
         </div>
 
         <div class="shipband">
-          <div class="shipband-copy">
-            <h3>Zariadenie k nám pošlete zdarma — kuriérom alebo cez Z‑BOX.</h3>
+          <div class="shipband-copy" id="shipband">
+            <h3>Zariadenie k nám pošlete zdarma kuriérom alebo cez Z‑BOX.</h3>
             <ol>
-              <li><button type="button" data-start="packeta">Vyberiete zariadenie a závadu.</button></li>
-              <li>Zvolíte Z‑BOX, alebo svoz z vašej adresy.</li>
+              <li>Vyberiete zariadenie a závadu.</li>
+              <li>Zvolíte Z‑BOX, alebo zvoz z vašej adresy.</li>
               <li>Zabalíte ho. Pri Z‑BOXe vhodíte s kódom; pri kuriérovi sa telefonicky dohodneme na čase zvozu.</li>
             </ol>
             <div class="shipoks">
               <span><i>✓</i> Vyzdvihnutie zdarma</span>
               <span><i>✓</i> 90 % opráv do pár hodín</span>
             </div>
-            <button class="btn" data-start="packeta">Pošlem zariadenie</button>
+            <button class="btn" data-start="packeta">Poslať zariadenie</button>
           </div>
           <div class="shipband-pic">
             <img src="itya-kurier-vans.png" alt="Kuriérska preprava zadarmo po Slovensku" width="960" height="540">
           </div>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 04 — mail‑in je spôsob doručenia, nie druhý web</span><p>Pás je marketingová brána pre kampane. Vedie do toho istého toku ako všetko ostatné, len s predvybraným spôsobom.</p><p style="margin-top:.4rem"><em>Princíp:</em> paralelný objednávkový systém pre jednu službu znamená dva katalógy, dva formuláre a dve miesta, kde sa rozíde cena.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> zo štyroch referenčných webov mail‑in reálne funguje na dvoch — Comfor ho má ako možnosť dopravy pri cene, iSmash ako spôsob doručenia v checkoute. Dvaja, čo z neho spravili samostatnú deklaráciu alebo ho ignorovali, nemajú nič: tSmart ho inzeruje na domovskej a nemá zaň ani stránku. Zároveň: organický dopyt na frázy typu „servis kuriérom“ je v SK nemerateľný (Ahrefs, 9/2026), takže táto stránka je kampaňová, nie SEO asset.</p></div>
+        <div class="anno"><span class="label">Poznámka 04 — Posielanie nie je druhý web</span><p>Tento pás je stránka pre reklamu. Vedie do toho istého toku ako všetko ostatné, len s predvybraným spôsobom doručenia.</p><p><em>Prečo:</em> Samostatný objednávkový systém pre jednu službu znamená dva katalógy, dva formuláre a dve miesta, kde sa rozíde cena.</p><p><em>Podopiera to:</em> Zo štyroch porovnávaných webov posielanie reálne funguje na dvoch — a u oboch je to jedna z možností dopravy v bežnom toku. tSmart ho inzeruje na úvodnej stránke a nemá zaň ani stránku. Navyše: „servis kuriérom“ na Slovensku nikto nehľadá, takže to nebude zdroj návštevnosti z Googlu.</p></div>
       </div>
     </div>
 
@@ -783,11 +784,11 @@ button.card:active, .specard:active{transform:scale(.97)}
         <div class="row" style="gap:.5rem">
           <input class="input" id="q" placeholder="Napr. iPhone 13, MacBook Air M1, PS5…" style="max-width:420px" autocomplete="off">
         </div>
-        <div class="anno"><span class="label">Poznámka 05 — čo renderuje JavaScript, pre vyhľadávač neexistuje</span><p>Našepkávač hľadá naprieč značkou, sériou aj modelom. Pod ním je serverovo vykreslený zoznam — to je zároveň SEO plocha.</p><p style="margin-top:.4rem"><em>Princíp:</em> vyhľadávanie je konverzný prvok, zoznam je indexovateľný obsah. Jedno nenahrádza druhé.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> na phone‑medic.nl som ten hero search bar overil v prehliadači — existuje. V HTML, ktoré dostane crawler alebo AI bot, nie je. Ako konverzný prvok teda funguje, ako SEO prvok neexistuje.</p><p style="margin-top:.4rem">Nič nie je predvolené: značka, séria ani model. Kaskáda sa otvára zhora nadol až podľa toho, čo človek zvolí.</p></div>
+        <div class="anno"><span class="label">Poznámka 05 — Čo načíta JavaScript, Google nevidí</span><p>Vyhľadávanie hľadá naraz značku, sériu aj model. Pod ním je obyčajný zoznam, ktorý si prečíta Google.</p><p><em>Prečo:</em> Vyhľadávanie je rýchle pre toho, kto vie, čo má. Zoznam je to, čo prináša ľudí z Googlu. Jedno nenahradí druhé.</p><p><em>Podopiera to:</em> Overili sme si to na phone-medic.nl, ktorý sa klientovi páčil. Vyhľadávanie tam naozaj je, ale načíta sa až dodatočne — Google ho nevidí.</p><p><em>Pozor:</em> Nič tu nie je predvyplnené. Značka, séria ani model. (Pravidlo 9.)</p></div>
         <div><span class="label">Značka</span><div class="row" id="brands" style="margin-top:.45rem"></div></div>
         <div><span class="label">Séria</span><div class="row" id="series" style="margin-top:.45rem"></div></div>
         <div><span class="label">Model</span><div class="grid g4" id="models" style="margin-top:.45rem"></div></div>
-        <div class="anno"><span class="label">Poznámka 06 — otvorená otázka na klienta</span><p><strong>Berie ITYA na posielanie aj Android, Windows a konzoly, alebo len Apple?</strong> Mení to počet stránok aj celú taxonómiu.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> katalóg v prototype už počíta so všetkým (PS5, MacBook, Pixel). Ostrá verzia to musí buď potvrdiť, alebo zúžiť — a podľa toho sa mení aj rozsah prác.</p></div>
+        <div class="anno"><span class="label">Poznámka 06 — Otázka na klienta</span><p><strong>Berieme na posielanie aj Android, Windows a konzoly, alebo len Apple?</strong> Od toho závisí, koľko stránok treba postaviť.</p><p><em>Vymyslené:</em> Zoznam modelov. Zámerne obsahuje aj PS5 a Pixel, aby bolo vidieť, o čom sa bavíme.</p></div>
         <div class="row"><button class="btn ghost" data-go="home">Späť</button></div>
       </div>
     </div>
@@ -816,7 +817,7 @@ button.card:active, .specard:active{transform:scale(.97)}
                 <span class="hint">Čím konkrétnejšie, tým rýchlejšie vieme pripraviť diagnózu.</span>
               </div>
             </div>
-            <div class="anno"><span class="label">Poznámka 07 — slovník používateľa, nie prevádzky</span><p>Možnosti sú napísané ako <em>čo sa stalo</em> a zoskupené do kategórií s obrázkom. Vlastný popis je plnohodnotná cesta, nie záchranná brzda. „Neviem, čo mu je“ je rovnocenná voľba.</p><p style="margin-top:.4rem"><em>Princíp:</em> zákazník nevie, čo je flex napájania. Vie, že mu telefón spadol a nereaguje dotyk. Preklad z jedného slovníka do druhého je naša práca, nie jeho.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> pozorovanie naprieč všetkými štyrmi referenciami — Comfor zoskupuje podľa príznaku („Problém s displejom“), Phone‑Medic pridáva pod každú opravu vetu v bežnej reči, iSmash má dokonca možnosť „I don’t know“ smerovanú na platenú diagnostiku. NN/g ten istý mechanizmus popisuje pri FAQ (Farrell, 2012/2014): slovná zásoba firmy a slovná zásoba používateľov sa navzájom míňajú. Konverzné číslo k tomu nemám.</p><p style="margin-top:.4rem">Pravý stĺpec s riešeniami ostáva prázdny, kým si človek nevyberie — nepredstiera cenu za neho.</p></div>
+            <div class="anno"><span class="label">Poznámka 07 — Píšeme, ako hovorí zákazník</span><p>Poruchy sú napísané tým, čo sa stalo, a rozdelené do skupín s obrázkom. Vlastný popis je plnohodnotná možnosť. „Neviem, čo mu je“ tiež.</p><p><em>Prečo:</em> Zákazník nevie, čo je flex napájania. Vie, že mu telefón spadol a nereaguje dotyk. Preložiť to je naša práca, nie jeho.</p><p><em>Podopiera to:</em> Robia to všetci štyria, ktorých sme porovnávali. iSmash má priamo tlačidlo „Neviem“ a pošle človeka na platenú diagnostiku. Bez takej možnosti tí ľudia odídu bez objednávky. (Pravidlo 10.)</p><p><em>Pozor:</em> Stĺpec s riešeniami ostáva prázdny, kým si človek nevyberie. Nepredstiera cenu za neho.</p></div>
           </div>
 
           <aside class="pl-side sol-panel" id="solutionsBlock">
@@ -834,7 +835,7 @@ button.card:active, .specard:active{transform:scale(.97)}
               <button class="btn ghost" data-go="picker">Späť</button>
             </div>
             <p class="hint" style="margin-top:.7rem"><span class="lede-em">Neplatíte nič dopredu — až po schválení ceny.</span></p>
-            <div class="anno"><span class="label">Poznámka 08 — cena pred záväzkom; orientačná cena je legitímna, skrytá nie</span><p>Ceny sú viditeľné na stránke opravy, s časom vedľa sumy. Tam, kde ide o <em>možné</em> riešenia, sú dôsledne označené ako orientačné; tam, kde je oprava jednoznačná, platí formulácia „konečná cena vrátane dielu a práce“. Miešať tie dve by bolo horšie než nepovedať nič.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Baymard: <strong>40 %</strong> ľudí opustí košík kvôli nákladom, ktoré uvideli neskoro, ďalších <strong>12 %</strong> preto, že si celkovú sumu nevedeli dopredu spočítať; <strong>64 %</strong> hľadá cenu dopravy ešte na stránke produktu. Baymard zároveň výslovne pripúšťa <em>cenové rozpätie</em> ako riešenie tam, kde presné číslo vypočítať nejde — to je priama opora pre „od“ a „cca“.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Santana, Dallas &amp; Morwitz (<em>Marketing Science</em>, 2020): pri postupne odhaľovanej cene si 94 % ľudí vybralo drahšiu možnosť oproti 18,9 % pri cene uvedenej vopred, a spokojnosť klesla z 5,52 na 4,58 na sedembodovej škále. Pri servise je tá druhá časť dôležitejšia: cenový šok potom, čo už človek poslal telefón, je problém s recenziami, nie s košíkom.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> sumy sú z reálneho cenníka ITYA pre iPhone 13. Pri inom modeli sú ilustračné.</p></div>
+            <div class="anno"><span class="label">Poznámka 08 — Ceny ukazujeme, neskrývame</span><p>Ceny sú vidieť priamo tu, s časom opravy vedľa sumy.</p><p><em>Prečo:</em> Kto cenu nevidí, odíde. Kto ju uvidí až na konci, zaplatí — ale bude nespokojný.</p><p><em>Podopiera to:</em> Baymard: 40 % ľudí opustí košík kvôli nákladom, ktoré uvideli neskoro. Druhá štúdia porovnávala tú istú ponuku v dvoch verziách: keď sa cena odhaľovala postupne, spokojnosť nakupujúcich klesla. Pri servise je to horšie než strata objednávky — cenový šok potom, čo už človek poslal telefón, sa vráti ako zlá recenzia. (Pravidlá 1 a 2.)</p><p><em>Pozor:</em> Používame dva spôsoby, ako hovoriť o cene, a nesmú sa miešať. Pri jednoznačnej oprave „konečná cena vrátane dielu a práce“. Pri možných riešeniach dôsledne „orientačne“. Keby sa striedali, zákazník prestane veriť obom.</p><p><em>Vymyslené:</em> Ceny pri iných modeloch než iPhone 13. Tie pre iPhone 13 sú z ich skutočného cenníka.</p></div>
           </aside>
         </div>
 
@@ -867,7 +868,7 @@ button.card:active, .specard:active{transform:scale(.97)}
         </div>
         <div class="card" id="fuRecap"></div>
         <div class="grid g3" id="fulfil"></div>
-        <div class="anno"><span class="label">Poznámka 09 — všetky možnosti naraz a porovnateľne</span><p>Tri cesty vedľa seba, rovnaké atribúty v rovnakom poradí, zvýraznené <strong>0 € / platíme my</strong> a konkrétny dátum namiesto lehoty.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Baymard: <strong>polovica e‑shopov</strong> nezobrazí všetky spôsoby doručenia tam, kde sa človek rozhoduje — a používatelia potom predpokladajú, že tá možnosť neexistuje. To, nie prebytok možností, je reálne riziko.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> paralýza z výberu sa v metaanalýze 50 experimentov (Scheibehenne et al., 2010; n = 5 036) <strong>nepotvrdila</strong> — priemerná veľkosť efektu 0,02, teda nula. Neskoršia metaanalýza (Chernev et al., 2015) ju našla, ale len za štyroch podmienok: zložitá množina, ťažká úloha, neistá preferencia, cieľ rozhodovania. Pri troch jasne označených možnostiach neplatí ani jedna. Dizajnový záver preto nie je „menej možností“, ale <em>porovnateľné</em> možnosti.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> dátum namiesto lehoty je samostatné pravidlo Baymardu (#543): „3–5 pracovných dní“ núti človeka počítať, „v stredu 17. 9.“ nie. Comfor to robí a ukazuje dokonca rozdielne termíny podľa skladu dielov na pobočke.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> dátumy a časy sú vzorové. Ostré musia vychádzať z reálnej kapacity servisu a dostupnosti dielov — inak je z pravidla sľub, ktorý sa nedodrží.</p></div>
+        <div class="anno"><span class="label">Poznámka 09 — Tri možnosti vedľa seba, v rovnakom tvare</span><p>Pri každej to isté a v rovnakom poradí: čo urobíte, koľko to stojí, kedy to máte späť. Konkrétny dátum, nie lehota.</p><p><em>Prečo:</em> Bežná obava je, že tri možnosti človeka zmätú. Skutočný problém je opačný: že ich neuvidí a bude si myslieť, že neexistujú.</p><p><em>Podopiera to:</em> Baymard zistil, že polovica e-shopov nezobrazí všetky spôsoby doručenia tam, kde sa človek rozhoduje. A obava z prílišného výberu? Pochádza zo starej štúdie s džemami. Keď ju overili na 50 ďalších pokusoch, efekt vyšiel prakticky nulový. (Pravidlá 5 a 6.)</p><p><em>Vymyslené:</em> Dátumy a časy. Naostro musia vychádzať z reálnej kapacity servisu — inak je z pravidla sľub, ktorý sa nedodrží.</p></div>
         <div class="row">
           <button class="btn" id="fulfilNext" data-go="wizard">Pokračovať v objednávke</button>
           <button class="btn ghost" data-go="pricelist">Späť</button>
@@ -892,13 +893,13 @@ button.card:active, .specard:active{transform:scale(.97)}
             <div class="recap" id="recap"></div>
             <div class="sol-panel" id="recapSols"></div>
 
-            <div class="anno"><span class="label">Poznámka 10 — rozhodnutie sa robí raz</span><p>Zariadenie, porucha aj spôsob sú rozhodnuté pred formulárom, na vlastných obrazovkách s vlastnou URL. Formulár už len rekapituluje, s odkazom „zmeniť“ pri každom riadku.</p><p style="margin-top:.4rem"><em>Princíp:</em> výber, ktorý sa robí druhýkrát, nie je potvrdenie — je to nová príležitosť zaváhať. A tie kroky musia byť stránky tak či tak: chodí na ne organický dopyt a kampane potrebujú URL, ktorú krok sprievodcu nemá.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> tu nemám konverzné číslo a nebudem ho predstierať. Čo mám: Baymard (2024) — priemerný checkout má 11,3 polí, pričom väčšine stránok stačí 8. Zuko upozorňuje, že krokované formuláre pridávajú poruchu, ktorú jednostránkové nemajú (strata dát pri návrate späť), a oprava tejto chyby priniesla až 10 %. A NN/g odporúča sprievodcu pre presne tento profil používateľa. Dokopy to hovorí: krokuj, ale nekrokuj to isté dvakrát.</p><p style="margin-top:.4rem">Vpravo beží živý súčet — nie je to košík, je to odhad. Pri možných riešeniach je to zámerne <em>rozpätie</em>, nie súčet.</p></div>
+            <div class="anno"><span class="label">Poznámka 10 — To isté sa nepýtame dvakrát</span><p>Zariadenie, porucha aj spôsob doručenia sú vybraté predtým. Tu je len prehľad a pri každom riadku odkaz „zmeniť“.</p><p><em>Prečo:</em> Keď sa človeka spýtame na to isté druhýkrát, nie je to potvrdenie. Je to nová príležitosť zaváhať.</p><p><em>Podopiera to:</em> Priame číslo na to nemáme a nebudeme predstierať, že áno. Nepriamo: krokované formuláre majú chybu, ktorú jednostránkové nemajú — pri kroku späť sa strácajú zadané údaje. Oprava tejto chyby priniesla až 10 % viac dokončených formulárov. (Pravidlo 3.)</p><p><em>Pozor:</em> Vpravo beží živý odhad. Nie je to košík, je to odhad — a preto je to rozpätie, nie súčet.</p></div>
 
             <h3 style="font-size:1.05rem; margin:1.4rem 0 .25rem">Pridať k oprave?</h3>
             <p class="hint" style="margin-bottom:.7rem">Nepovinné. Robíme to pri tej istej návšteve, takže nič navyše nečakáte.</p>
             <div class="grid g2" id="addons"></div>
 
-            <div class="anno"><span class="label">Poznámka 11 — pridávať až po rozhodnutí</span><p>Jediné miesto v celom toku, kde sa niečo pridáva. Tri až štyri položky, všetky súvisiace s tým, čo sa práve opravuje.</p><p style="margin-top:.4rem"><em>Princíp:</em> človek je už rozhodnutý a marginálny náklad je nízky — doplnok sa robí pri tej istej návšteve, takže nič navyše nečaká.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> vzor, nie štúdia: Phone‑Medic takto predáva doobnovenie vodotesnosti za 19 € priamo pri oprave, iSmash ponúka prechod na repasované zariadenie uprostred servisného toku a k tomu záruku na batériu pod 80 % na tri roky. Číslo o výťažnosti nemám k dispozícii ani pri jednom.</p></div>
+            <div class="anno"><span class="label">Poznámka 11 — Doplnky ponúkame až po rozhodnutí</span><p>Jediné miesto v celom toku, kde sa niečo pridáva. Tri až štyri položky, všetky súvisiace s tou opravou.</p><p><em>Prečo:</em> Človek je už rozhodnutý a doplnok sa urobí pri tej istej návšteve. Nič navyše nečaká.</p><p><em>Podopiera to:</em> Vzor od konkurencie, nie štúdia. Phone-Medic takto predáva doobnovenie vodotesnosti za 19 €. iSmash ponúka uprostred servisu prechod na repasované zariadenie. Koľko im to zarobí, nikde nezverejňujú.</p></div>
 
             <div class="row" style="margin-top:1.2rem">
               <button class="btn" data-wgo="2">Pokračovať</button>
@@ -916,10 +917,10 @@ button.card:active, .specard:active{transform:scale(.97)}
               <div class="field"><span class="label">Telefón</span><input class="input" type="tel" placeholder="+421 900 000 000">
                 <span class="hint">Voláme pred odoslaním — poradíme s balením a potvrdíme model.</span></div>
             </div>
-            <div class="anno"><span class="label">Poznámka 12 — relevantnosť polí, nie ich počet</span><p>Tri kontaktné polia. Telefón je povinný a dôvod je napísaný priamo pod ním. Žiadne IMEI, sériové číslo ani dátum kúpy.</p><p style="margin-top:.4rem"><em>Princíp:</em> nepýtame sa na veci, ktoré človek s rozbitým telefónom v ruke fyzicky nevie zistiť. Pole, na ktoré neviem odpovedať, je dôvod odísť — nie preto, že je to pole navyše, ale preto, že ma zastaví.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> „menej polí vždy vyhrá“ nie je pravda: v doloženom teste (Aagaard / Unbounce, cez CXL) skrátenie z 9 na 6 polí konverzie <em>znížilo o 14 %</em>, zatiaľ čo ponechanie všetkých deviatich s prepísanými popiskami ich zvýšilo o 19,2 %. Premenná je relevantnosť a popisky, nie počet. HubSpot pri analýze vyše 40 000 landing pages uvádza, že stránky pýtajúce vek, telefón a presnú adresu konvertujú horšie — ale publikuje to bez percent a je to korelácia, nie experiment.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> rozšírené tvrdenie, že pole na telefón zráža konverziu o 5 %, sa nedá dohľadať k žiadnej štúdii — pochádza z infografiky bez primárneho zdroja. Nepoužívať. Pri servise je navyše telefonát legitímny: MobilCare aj Počítačová pohotovosť volajú pred odoslaním zámerne, lebo to znižuje počet zle zabalených a zle opísaných zásielok.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> ak sa označia len nepovinné polia, 32 % ľudí nevyplní povinné (Baymard cez Jakoba Nielsena, 2025) — preto je „(nepovinné)“ pri tom jednom, nie hviezdičky pri ostatných.</p></div>
+            <div class="anno"><span class="label">Poznámka 12 — Nepýtame sa na to, čo zákazník nevie</span><p>Tri kontaktné polia. Telefón je povinný a dôvod je napísaný priamo pod ním. Žiadne IMEI, sériové číslo ani dátum kúpy.</p><p><em>Prečo:</em> Človek s rozbitým telefónom v ruke tie údaje nevie zistiť. Pole, na ktoré neviem odpovedať, ma zastaví.</p><p><em>Podopiera to:</em> V jednom teste skrátili formulár z deviatich polí na šesť a konverzia klesla o 14 %. Keď namiesto toho nechali všetkých deväť a len prepísali popisky, stúpla o 19 %. Nejde teda o počet polí, ale o to, či na ne človek vie odpovedať. (Pravidlo 4.)</p><p><em>Pozor:</em> Tvrdenie, že pole na telefón zráža konverziu o 5 %, sa nedá dohľadať k žiadnej štúdii — pochádza z infografiky. Pri servise je telefonát pred odoslaním navyše normálny: MobilCare aj Počítačová pohotovosť ho robia zámerne, lebo znižuje počet zle zabalených zásielok.</p></div>
             <div class="sep"></div>
             <div id="branch"></div>
-            <div class="anno"><span class="label">Poznámka 13 — formulár sa prispôsobí ceste, nie naopak</span><p>Spôsob je zvolený už na predchádzajúcej obrazovke, takže tu sa len dopýta to, čo daná cesta naozaj potrebuje. Pri osobnej návšteve žiadny kalendár — predajňa je walk‑in a termín by bola falošná požiadavka; namiesto neho karta s adresou, hodinami a parkovaním.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Baymard to odporúča priamo: keď si človek zvolí osobný odber, má sa prispôsobiť celý zvyšok toku — nepýtať doručovaciu adresu, ale miesto a čas.</p><p style="margin-top:.4rem">Dve rozhodnutia, ktoré vyzerajú ako detail a nie sú: <strong>poistenie je voľba, nie pole na hodnotu</strong> (človek hodnotu nevie, číslo si vymyslí a aj tak ho overujeme), a <strong>spiatočné výdajné miesto sa nepýta pri objednávke</strong>, ale až keď je oprava hotová — vtedy má odpoveď zmysel. Pri Z‑BOXe ani nepotrebujeme vedieť, odkiaľ posiela: kód funguje z ktoréhokoľvek boxu.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> hranica poistného krytia je vzorová. Skutočný strop a to, či sa dá pripoistiť, musí potvrdiť Packeta — bez toho sa tá suma na web písať nesmie.</p></div>
+            <div class="anno"><span class="label">Poznámka 13 — Formulár sa prispôsobí ceste</span><p>Spôsob doručenia je zvolený už predtým. Tu sa dopýta len to, čo daná cesta naozaj potrebuje.</p><p><em>Prečo:</em> Pri osobnej návšteve nie je kalendár. Predajňa funguje bez objednania, takže výber termínu by bola falošná požiadavka. Namiesto neho je adresa, hodiny a parkovanie.</p><p><em>Podopiera to:</em> Baymard to odporúča priamo: keď si človek zvolí osobný odber, nemá sa ho pýtať doručovacia adresa.</p><p><em>Pozor:</em> Dve veci, ktoré vyzerajú ako detail a nie sú. Poistenie je voľba, nie pole na hodnotu — človek hodnotu nevie a číslo si vymyslí. A kam poslať zariadenie späť sa pýtame až keď je oprava hotová, nie pri objednávke.</p><p><em>Vymyslené:</em> Hranica poistenia. Skutočnú musí potvrdiť Packeta — kým ju nemáme, na web sa žiadna suma nepíše.</p></div>
             <div class="row" style="margin-top:1rem">
               <button class="btn" data-go="confirm">Odoslať objednávku</button>
               <button class="btn ghost" data-wgo="1">Späť</button>
@@ -948,14 +949,14 @@ button.card:active, .specard:active{transform:scale(.97)}
 
         <div id="cfBody"></div>
 
-        <div class="anno"><span class="label">Poznámka 14 — potvrdenie sa musí vetviť</span><p>Celá obrazovka sa mení podľa zvolenej cesty: Z‑BOX má kód a vhodenie, kuriér termín zvozu, osobná návšteva kartu predajne s mapou. Jeden šablónový text s kódom Packety pre všetkých je chyba, ktorá sa v prvej verzii prototypu naozaj stala.</p><p style="margin-top:.4rem"><em>Princíp:</em> potvrdenie nie je poďakovanie, je to návod. Človek z neho musí vedieť, čo má urobiť v najbližšej hodine.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> iSmash posiela fyzický box s už nalepeným štítkom, Comfor volá a dohodne čas zvozu, MobilCare aj Počítačová pohotovosť majú potvrdzovací telefonát ako súčasť procesu — balenie je miesto, kde vzniká väčšina škôd v preprave, a všetci traja ho riešia aktívne.</p></div>
+        <div class="anno"><span class="label">Poznámka 14 — Potvrdenie je návod, nie poďakovanie</span><p>Celá obrazovka sa mení podľa zvolenej cesty. Z-BOX má kód a návod na vhodenie. Kuriér termín zvozu. Osobná návšteva adresu a mapu.</p><p><em>Prečo:</em> Človek z tejto obrazovky musí vedieť, čo má urobiť v najbližšej hodine.</p><p><em>Podopiera to:</em> Balenie je miesto, kde vzniká väčšina škôd v preprave. Všetci prevádzkovatelia, ktorých sme čítali, ho riešia aktívne — iSmash posiela krabicu s nalepeným štítkom, Comfor volá a dohodne zvoz.</p></div>
 
         <div class="card acc">
           <h4>Čo bude ďalej</h4>
           <p style="margin-top:.4rem" id="cfNext"></p>
         </div>
 
-        <div class="anno"><span class="label">Poznámka 15 — scenár, ktorý ako jediný prerába</span><p>Zaplatili sme dopravu, strávili čas na stole — a zákazník cenu odmietne. Poplatok za diagnostiku sa účtuje <em>len</em> v tomto prípade a musí byť napísaný na stránke pred objednaním, nie v obchodných podmienkach.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> trhový štandard, zhodne u všetkých, ktorých som čítal: iSTYLE 24 € pre iOS a 45 € pre Mac, SWISS Service 18 € s DPH, Počítačová pohotovosť 666 Kč, Alza 349 Kč za sprostredkovanie. iSmash je jediný zo štyroch referenčných webov, kto to formuluje jasne — a je to ich najlepšia veta.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> prečo dopredu a nie do OP: Santana et al. (2020) meria, že cena odhalená neskoro znižuje spokojnosť aj u ľudí, ktorí zákazku dokončili. Pri mail‑in je „neskoro“ až potom, čo človek pustil telefón z ruky.</p><p style="margin-top:.4rem"><em>Vzorový obsah:</em> 35 € je reálna sadzba, ktorú ITYA dnes uvádza.</p></div>
+        <div class="anno"><span class="label">Poznámka 15 — Jediný prípad, ktorý prerába</span><p>Zaplatili sme dopravu, strávili čas na stole — a zákazník cenu odmietne. Poplatok za diagnostiku sa účtuje len vtedy.</p><p><em>Prečo:</em> Nie je to spôsob, ako zarobiť. Je to spôsob, ako odradiť od zbytočných zásielok.</p><p><em>Podopiera to:</em> Robia to všetci: iSTYLE 24 € pri iPhone a 45 € pri Macu, SWISS Service 18 €, Počítačová pohotovosť 666 Kč, Alza 349 Kč. iSmash je jediný zo štyroch, kto to píše zrozumiteľne — a je to ich najlepšia veta.</p><p><em>Pozor:</em> V prototype je táto veta až tu. Patrí ešte pred odoslanie objednávky. Cena povedaná neskoro znižuje spokojnosť aj u ľudí, ktorí zákazku dokončili — a pri posielaní je „neskoro“ až potom, čo človek pustil telefón z ruky.</p><p><em>Vymyslené:</em> Nič. 35 € je ich súčasná sadzba.</p></div>
 
         <div class="row">
           <button class="btn" data-go="quote">Ďalej v prototype: prišla cenová ponuka</button>
@@ -990,7 +991,7 @@ button.card:active, .specard:active{transform:scale(.97)}
 
         <div class="ph" style="height:110px">fotky zariadenia pri príjme · 4 ks</div>
 
-        <div class="anno"><span class="label">Poznámka 16 — dôkaz o stave pri príjme</span><p>Fotky, IMEI a zápis stavu pri prevzatí. Pri osobnom príjme to zákazník vidí na vlastné oči — pri posielaní nie.</p><p style="margin-top:.4rem"><em>Princíp:</em> jediná obrana pri spore o poškriabaný rám. Nie je to funkcia webu, je to prevádzkový krok, ktorý musí byť v procese od prvého dňa — inak ho pri prvom spore nemáme.</p><p style="margin-top:.4rem">Až tu je aj skutočná cena po diagnostike. To je moment, ktorý postupné odhaľovanie ceny na webe obchádza — a preto musí byť všetko pred ním formulované ako orientačné.</p></div>
+        <div class="anno"><span class="label">Poznámka 16 — Fotky pri príjme</span><p>Stav zariadenia, IMEI a fotky pri prevzatí.</p><p><em>Prečo:</em> Keď zákazník príde osobne, stav svojho telefónu vidí na vlastné oči. Keď ho pošle, nevidí nič. Bez záznamu sa spor o poškriabaný rám nedá vyhrať.</p><p><em>Pozor:</em> Nie je to funkcia webu, ale krok v prevádzke. Musí byť v procese od prvého dňa, inak ho pri prvom spore nemáme.</p></div>
 
         <div class="row" id="quoteActions">
           <button class="btn" data-quote="yes">Schvaľujem, opravte to</button>
@@ -1000,7 +1001,7 @@ button.card:active, .specard:active{transform:scale(.97)}
         <div id="quoteConfirm" hidden></div>
         <div id="quoteResult" hidden></div>
 
-        <div class="anno"><span class="label">Poznámka 17 — tretia možnosť pri schvaľovaní</span><p>Schváliť všetko, schváliť časť, odmietnuť. Prostredné tlačidlo je to podstatné.</p><p style="margin-top:.4rem"><em>Princíp:</em> „displej áno, batéria teraz nie“ je najčastejšia reálna reakcia na cenovú ponuku. Bez toho tlačidla skončí telefonátom — alebo odmietnutím celej zákazky, čo je presne ten scenár, ktorý prerába.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> ani jeden zo štyroch referenčných webov čiastočné schválenie neponúka. Nie je to teda prevzatý vzor, je to medzera na trhu — a zároveň jediné miesto v prototype, kde navrhujem niečo, čo nikto z porovnávaných nerobí.</p></div>
+        <div class="anno"><span class="label">Poznámka 17 — Tretie tlačidlo: schváliť len časť</span><p>Schváliť všetko, schváliť časť, odmietnuť.</p><p><em>Prečo:</em> „Displej áno, batériu teraz nie“ je najčastejšia reálna reakcia na cenovú ponuku. Bez toho tlačidla to skončí telefonátom — alebo odmietnutím celej zákazky.</p><p><em>Podopiera to:</em> Nič. Ani jeden zo štyroch porovnávaných webov takú možnosť nedáva. Nie je to prevzatý vzor, je to jediné miesto v prototype, kde navrhujeme niečo, čo nerobí nikto.</p></div>
       </div>
     </div>
 
@@ -1014,7 +1015,7 @@ button.card:active, .specard:active{transform:scale(.97)}
         </div>
         <div id="stReturn" hidden></div>
         <ul class="tl" id="timeline"></ul>
-        <div class="anno"><span class="label">Poznámka 18 — ticho je nepriateľ</span><p>Stav zákazky online, so skutočnými časmi a menom technika. Spiatočné výdajné miesto sa pýta až tu, nie pri objednávke.</p><p style="margin-top:.4rem"><em>Princíp:</em> medzi vhodením do Z‑BOXu a telefonátom je zákazník bez telefónu a bez informácie. To ticho generuje telefonáty na servis a zlé recenzie — teda náklad aj škodu naraz.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> Comfor má verejné sledovanie zákazky, SWISS Service tiež; ITYA nie. Pri mail‑in to nie je nadštandard, je to náhrada za to, že zákazník nevidí do predajne. Konverzné číslo k tomu nemám — argument je prevádzkový.</p></div>
+        <div class="anno"><span class="label">Poznámka 18 — Ticho je nepriateľ</span><p>Časová os so skutočnými časmi a menom technika. Kam poslať zariadenie späť sa pýtame až tu.</p><p><em>Prečo:</em> Medzi vhodením do Z-BOXu a telefonátom je zákazník bez telefónu a bez informácií. To ticho vyrába telefonáty na servis a zlé recenzie.</p><p><em>Podopiera to:</em> Comfor aj SWISS Service majú sledovanie stavu, ITYA nie. Číslo k tomu nemáme — argument je prevádzkový, nie konverzný.</p><p><em>Pozor:</em> Prečo sa spiatočná adresa pýta až tu: pri odosielaní človek ešte nevie, či opravu schváli ani kde vtedy bude. Odpoveď má zmysel až teraz.</p></div>
         <div class="row">
           <button class="btn ghost" data-go="home">Späť na začiatok</button>
         </div>
@@ -1027,7 +1028,7 @@ button.card:active, .specard:active{transform:scale(.97)}
         <span class="label">Mimo rozsahu prototypu</span>
         <h1 id="outTitle">Táto stránka</h1>
         <p>Táto stránka nie je súčasťou prototypu. Prototyp pokrýva len servis — osobne v predajni aj poslanie na opravu.</p>
-        <div class="anno"><span class="label">Poznámka 19 — zámerne prázdne</span><p>Repasované, Výkup, Pre firmy, Predajňa aj päť špecializovaných servisných stránok sem patria ako navigácia, nie ako obsah prototypu.</p><p style="margin-top:.4rem"><em>Dôkaz:</em> nie sú prázdne preto, že sú nedôležité — naopak. Klaster <em>repasované</em> má v SK okolo 2 650 hľadaní mesačne s obtiažnosťou 0 a ITYA je na hlavných výrazoch na 14.–15. mieste; klaster <em>výkup</em> zhruba 2 800 hľadaní, z toho tri najsilnejšie výrazy s obtiažnosťou 3 a nižšou (Ahrefs, SK, 9/2026). Sú to dva najlacnejšie merateľné výnosy v projekte a ani jeden nie je v zadaní.</p></div>
+        <div class="anno"><span class="label">Poznámka 19 — Zámerne prázdne</span><p>Repasované, Výkup, Pre firmy, Predajňa aj päť servisných stránok sú tu ako navigácia, nie ako obsah.</p><p><em>Prečo:</em> Nie sú prázdne preto, že sú nedôležité. Naopak.</p><p><em>Podopiera to:</em> Repasované zariadenia má na Slovensku asi 2 650 hľadaní mesačne a ITYA je na hlavných výrazoch až na 14. – 15. mieste. Výkup asi 2 800 hľadaní, pričom tri najsilnejšie výrazy sú takmer bez konkurencie. Sú to dva najlacnejšie merateľné výnosy v projekte a ani jeden nie je v zadaní.</p></div>
         <button class="btn" data-go="home">Späť na úvod</button>
       </div>
     </div>
@@ -1882,6 +1883,26 @@ button.card:active, .specard:active{transform:scale(.97)}
   document.addEventListener("click", function(e){
     var t = e.target;
 
+    var jump = t.closest("[data-scroll]");
+    if(jump){
+      var to = jump.getAttribute("data-scroll");
+      function goShip(){
+        var el = document.getElementById(to);
+        $$("#sitenav button").forEach(function(s){ s.removeAttribute("data-on"); });
+        jump.setAttribute("data-on","1");
+        if(!el) return;
+        var bar = $(".bar");
+        var pad = (bar ? bar.getBoundingClientRect().height : 56) + 16;
+        var y = el.getBoundingClientRect().top + window.scrollY - pad;
+        window.scrollTo({top: Math.max(0, y), behavior:"smooth"});
+      }
+      if(state.screen !== "home"){
+        show("home");
+        requestAnimationFrame(function(){ requestAnimationFrame(goShip); });
+      } else goShip();
+      return;
+    }
+
     var start = t.closest("[data-start]");
     if(start){
       state.model = null; state.symptom = null;
@@ -2027,7 +2048,7 @@ button.card:active, .specard:active{transform:scale(.97)}
     el.appendChild(document.createTextNode(m[2]));
   });
   $$(".anno p > em").forEach(function(em){
-    if(!/^(Princíp|Dôkaz|Vzorový obsah):?\s*$/.test(em.textContent.trim())) return;
+    if(!/^(Prečo|Podopiera to|Vymyslené|Pozor|Princíp|Dôkaz|Vzorový obsah):?\s*$/.test(em.textContent.trim())) return;
     em.classList.add("anno-k");
   });
   renderPicker(); renderFulfil();
