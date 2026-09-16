@@ -607,8 +607,8 @@ button.card:active, .specard:active{transform:scale(.97)}
               Z Bratislavy aj z celého Slovenska. <strong>Doprava tam aj späť je zadarmo.</strong>
             </p>
             <div class="row" style="justify-content:center">
-              <button class="btn" data-start="packeta">Pošlem zariadenie</button>
-              <button class="btn ghost" data-start="osobne">Prídem do predajne</button>
+              <button class="btn" data-channel="choose" data-go="picker">Popísať závadu zariadenia</button>
+              <button class="btn ghost" data-scroll="shipband">Ako poslať zariadenie</button>
             </div>
             <p class="hint">Bez registrácie. <span class="lede-em">Neplatíte nič dopredu — až po schválení ceny.</span></p>
             <a class="rating" target="_blank" rel="noopener noreferrer"
@@ -620,7 +620,7 @@ button.card:active, .specard:active{transform:scale(.97)}
           <div class="ringnodes" id="ringnodes">
             <div class="pipe np1" data-w>
               <img class="pipe3d" src="itya-pipe-phone.png" alt="" width="144" height="144">
-              <div class="node"><span class="ic">1</span><span class="tx">Vyberieš opravu<small>online, za 2 minúty</small></span></div>
+              <div class="node"><span class="ic">1</span><span class="tx">Popíšeš závadu<small>online, za 2 minúty</small></span></div>
             </div>
             <div class="branch np2" data-w>
               <div class="pipe">
@@ -631,7 +631,7 @@ button.card:active, .specard:active{transform:scale(.97)}
             </div>
             <div class="pipe np3" data-w>
               <img class="pipe3d" src="itya-pipe-lupa.png" alt="" width="144" height="144">
-              <div class="node"><span class="ic">2</span><span class="tx">Diagnostika<small>zdarma pri oprave</small></span></div>
+              <div class="node"><span class="ic">2</span><span class="tx">Zdiagnostikujeme<small>zdarma pri oprave</small></span></div>
             </div>
             <div class="pipe np4" data-w>
               <img class="pipe3d" src="itya-pipe-euro.png" alt="" width="144" height="144">
@@ -787,11 +787,11 @@ button.card:active, .specard:active{transform:scale(.97)}
 
         <div class="shipband">
           <div class="shipband-copy" id="shipband">
-            <h3>Zariadenie k nám pošlete zdarma kuriérom alebo cez Z‑BOX.</h3>
+            <h3>Zariadenie k nám pošleš zdarma kuriérom alebo cez Z‑BOX.</h3>
             <ol>
-              <li>Vyberiete zariadenie a závadu.</li>
-              <li>Zvolíte Z‑BOX, alebo zvoz z vašej adresy.</li>
-              <li>Zabalíte ho. Pri Z‑BOXe vhodíte s kódom; pri kuriérovi sa telefonicky dohodneme na čase zvozu.</li>
+              <li>Popíšeš závadu.</li>
+              <li>Zvolíš Z‑BOX, alebo zvoz z tvojej adresy.</li>
+              <li>Zabalíš ho. Pri Z‑BOXe vhodíš s kódom, ktorý ti dáme; pri kuriérovi sa telefonicky dohodneme na čase zvozu.</li>
             </ol>
             <div class="shipoks">
               <span><i>✓</i> Vyzdvihnutie zdarma</span>
@@ -1975,7 +1975,8 @@ button.card:active, .specard:active{transform:scale(.97)}
       function goShip(){
         var el = document.getElementById(to);
         $$("#sitenav button").forEach(function(s){ s.removeAttribute("data-on"); });
-        jump.setAttribute("data-on","1");
+        var navBtn = document.querySelector('#sitenav [data-scroll="'+to+'"]');
+        (navBtn || jump).setAttribute("data-on","1");
         if(!el) return;
         var bar = $(".bar");
         var pad = (bar ? bar.getBoundingClientRect().height : 56) + 16;
