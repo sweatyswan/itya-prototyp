@@ -464,6 +464,10 @@ button.card .card-pic{cursor:pointer}
 .coffee-form > .btn:not(.link){margin-top:var(--s5)}
 .coffee-form:has(.coffee-err:not([hidden])) > .btn:not(.link){margin-top:var(--s2)}
 .contact-page{max-width:720px}
+.contact-head-row{display:flex; align-items:center; justify-content:space-between;
+  gap:var(--s4); margin-top:var(--s1)}
+.contact-head-row h1{margin:0; min-width:0}
+.contact-head-row .btn{flex:none}
 .walk-upsell .btn{justify-self:start}
 .pl-ship-pic{border-radius:var(--r-md); overflow:hidden; aspect-ratio:16/9;
   background:var(--fill); border:1px solid var(--line)}
@@ -1385,7 +1389,10 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       <div class="stack contact-page">
         <div>
           <span class="label">Predajňa</span>
-          <h1 style="margin-top:var(--s1)">Kde nás nájdeš</h1>
+          <div class="contact-head-row">
+            <h1>Kde nás nájdeš</h1>
+            <button class="btn ghost" data-go="home">Späť na úvod</button>
+          </div>
         </div>
         <article class="pl-box" id="contactWalk">
           <span class="label">Prídem osobne</span>
@@ -1473,9 +1480,6 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
           </div>
         </article>
         <div class="anno"><span class="label">Poznámka · Káva pri návšteve</span><p>Osobná návšteva ostáva bez rezervácie opravy. Termín sa nikde nevyžaduje, kto chce, len povie, kedy príde, a dostane kávu podľa priania.</p><p><em>Prečo:</em> Rezervačný kalendár by z prednosti („príď kedy chceš“) urobil podmienku. Káva je dôvod povedať nám čas dobrovoľne, a zároveň jediná vec, ktorú vieme z návštevy predajne odmerať.</p><p><em>Pozor:</em> Karta má aj adresu, otváracie hodiny, parkovanie a mapu, to je informácia, nie výzva. Výzva je jedna: objednať kávu. Konverzia na nej je store_visit (návšteva predajne).</p><p><em>Vymyslené:</em> Objednávka kávy aj časy príchodu. Naostro to musí zvládnuť prevádzka, ak sa káva nedá spoľahlivo podať, nespúšťať to.</p></div>
-        <div class="row">
-          <button class="btn ghost" data-go="home">Späť na úvod</button>
-        </div>
       </div>
     </div>
 
