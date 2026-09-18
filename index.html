@@ -84,33 +84,16 @@ button .ph, a .ph{cursor:pointer}
 /* ---------- chrome ---------- */
 .bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:30;
   background:var(--frame); border-bottom:1px solid var(--line)}
-.bar-in{max-width:1440px; margin-inline:auto; width:100%; padding:var(--s2) var(--s5);
-  display:flex; align-items:center; gap:var(--s2) var(--s4); flex-wrap:wrap}
-.brand{font-family:"IBM Plex Mono",monospace; font-size:var(--t-eyebrow); font-weight:var(--w-semi);
-  letter-spacing:.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
-.brand b{color:var(--ink)}
-.nav{display:flex; gap:var(--s1); flex-wrap:wrap; flex:1; min-width:0}
-.nav button{font-family:"IBM Plex Mono",monospace; font-size:var(--t-eyebrow); font-weight:var(--w-semi);
-  background:transparent; border:1px solid transparent; color:var(--muted);
-  padding:var(--s1) var(--s2); border-radius:var(--r-sm); white-space:nowrap}
-.nav button:hover{color:var(--ink); background:var(--fill)}
-.nav button[aria-current="true"]{background:var(--ink); color:var(--frame); border-color:var(--ink)}
+.bar-in{width:100%; min-height:1.25rem; padding:0 max(var(--screen-pad), env(safe-area-inset-right,0px)) 0 max(var(--screen-pad), env(safe-area-inset-left,0px));
+  display:flex; justify-content:flex-end; align-items:center; gap:var(--s1)}
 .toggle{font-family:"IBM Plex Mono",monospace; font-size:var(--t-eyebrow); font-weight:var(--w-semi);
   letter-spacing:.08em; text-transform:uppercase; background:transparent;
-  border:1px solid var(--line-2); color:var(--ink-2); padding:var(--s1) var(--s2);
-  border-radius:var(--r-sm); white-space:nowrap}
+  border:1px solid var(--line); color:var(--ink-2); padding:0 var(--s2);
+  min-height:1.125rem; line-height:1.125rem; border-radius:var(--r-sm); white-space:nowrap}
 .toggle[aria-pressed="true"]{background:var(--anno); border-color:var(--anno); color:#fff}
 
 .stage{padding:0}
-.win{background:var(--frame); min-height:calc(100vh - 48px); overflow-x:clip}
-.urlbar{display:flex; align-items:center; gap:var(--s3); max-width:1440px; margin-inline:auto; width:100%;
-  padding:.5rem var(--screen-pad); background:var(--fill-2); border-bottom:1px solid var(--line)}
-.dots{display:flex; gap:var(--s1); flex:none}
-.dots i{width:9px; height:9px; border-radius:50%; background:var(--line-2); display:block}
-.url{flex:1; min-width:0; background:var(--frame); border:1px solid var(--line);
-  border-radius:var(--pill); padding:var(--s1) var(--s3); font-family:"IBM Plex Mono",monospace;
-  font-size:var(--t-eyebrow); color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-.url b{color:var(--ink-2); font-weight:var(--w-semi)}
+.win{background:var(--frame); min-height:calc(100vh - 1.25rem); overflow-x:clip}
 
 .sitehead{display:flex; align-items:center; gap:var(--s4); flex-wrap:wrap;
   max-width:1440px; margin-inline:auto; width:100%;
@@ -260,7 +243,7 @@ a.btn{text-decoration:none}
 .sol-panel:not(.is-empty) .sol-hero-name{font-size:var(--t-sm); font-weight:var(--w-bold)}
 .sol-panel > .row:has(> .btn:not(.link):not(.sm)){margin-top:var(--s5)}
 .sol-panel > .summary{border-top:1px solid var(--line-2); padding-top:var(--s3)}
-.pl-rail{display:grid; gap:var(--s3); position:sticky; top:92px; align-self:start}
+.pl-rail{display:grid; gap:var(--s3); position:sticky; top:calc(1.25rem + env(safe-area-inset-top,0px) + var(--s2)); align-self:start}
 .pl-ship-next{gap:var(--s4); padding:var(--s3) var(--s4)}
 .pl-ship-next .btn{width:100%; justify-self:stretch}
 .symlist{display:grid; gap:var(--s4)}
@@ -765,10 +748,6 @@ button.card:active, .specard:active{transform:scale(.97)}
 
 @media (max-width:899px){
   :root{--screen-pad:1.25rem}
-  .urlbar{display:none}
-  .bar-in{flex-wrap:nowrap; gap:var(--s2); padding:var(--s2) var(--s3); overflow-x:auto;
-    -webkit-overflow-scrolling:touch; scrollbar-width:thin}
-  .nav{flex-wrap:nowrap; flex:1 0 auto}
   .toggle{flex:none}
   .sitehead{display:grid; grid-template-columns:auto 1fr; grid-template-areas:"logo util" "nav nav";
     align-items:center; gap:var(--s1) var(--s2);
@@ -895,20 +874,14 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
 
 <div class="bar">
   <div class="bar-in">
-    <span class="brand"><b>ITYA</b> · lo-fi prototyp</span>
-    <nav class="nav" id="nav" aria-label="Obrazovky"></nav>
-    <button class="toggle" id="resetBtn" style="border-color:var(--line-2)">Reset</button>
+    <nav class="nav" id="nav" hidden></nav>
+    <button class="toggle" id="resetBtn">Reset</button>
     <button class="toggle" id="notesBtn" aria-pressed="false">Poznámky</button>
   </div>
 </div>
 
 <div class="stage">
   <div class="win">
-    <div class="urlbar">
-      <span class="dots"><i></i><i></i><i></i></span>
-      <span class="url">itya.sk<b id="url">/</b></span>
-    </div>
-
     <div class="sitehead">
       <button type="button" class="logo" data-go="home" aria-label="itya, úvodná stránka">
         <img src="itya-logo.webp" alt="" width="96" height="56">
@@ -2958,7 +2931,8 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var i = flow.map(function(s){return s.id;}).indexOf(id);
     var o = OUT[state.outKey];
     var sc = SCREENS.filter(function(s){ return s.id === id; })[0];
-    $("#url").textContent = (id === "out" && o) ? o.url : (sc ? sc.url : "/");
+    var urlEl = $("#url");
+    if(urlEl) urlEl.textContent = (id === "out" && o) ? o.url : (sc ? sc.url : "/");
     $("#where").textContent = (id === "out" && o)
       ? "Mimo prototypu · "+o.t
       : (i > -1 ? "Obrazovka "+(i+1)+" z "+flow.length+" · "+flow[i].name
