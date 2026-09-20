@@ -4,9 +4,15 @@
 <title>Príď alebo pošli, všetko vieme opraviť.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 
 <style>
+@font-face{font-family:"N27"; src:url("fonts/N27-ExtraLight.otf") format("opentype"); font-weight:200; font-style:normal; font-display:swap}
+@font-face{font-family:"N27"; src:url("fonts/N27-Light.otf") format("opentype"); font-weight:300; font-style:normal; font-display:swap}
+@font-face{font-family:"N27"; src:url("fonts/N27-Regular.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap}
+@font-face{font-family:"N27"; src:url("fonts/N27-Medium.otf") format("opentype"); font-weight:500; font-style:normal; font-display:swap}
+@font-face{font-family:"N27"; src:url("fonts/N27-Bold.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap}
+
 /* ITYA farby + ClickUp hierarchia. Oranžová ostáva pre poznámky k návrhu. */
 :root{
   --paper:#FFFFFF; --frame:#FFFFFF; --fill:#F4F6F5; --fill-2:#F8FAF9;
@@ -14,30 +20,33 @@
   --line:#E6EAE9; --line-2:#8A9391; --line-3:#6B7574;
 
   --screen-pad:2rem;
-  --mint:#86EDDD; --mint-ink:#0A5C54; --pink:#E89BC4;
-  --acc:#86EDDD; --acc-ink:#141817; --acc-soft:#E6FBF7; --acc-line:#0A5C54;
+  --mint:#85EEDD; --mint-ink:#0A5C54; --pink:#E89BC4; --peach:#F3B083;
+  --acc:#85EEDD; --acc-ink:#141817; --acc-soft:#E6FBF7; --acc-line:#0A5C54;
 
   --anno:#A8452C; --anno-soft:#FAEDE9; --anno-line:#E3BFB4;
-  --price:#6743C2;
-  --radius:16px; --pill:999px;
+  --price:#F3B083;
+  --radius:0px; --pill:0px;
+  --font-ui:"Mulish", system-ui, -apple-system, Arial, sans-serif;
+  --font-display:"N27", "Mulish", system-ui, sans-serif;
 
-  /* ===== TYPOGRAFIA: rola, nie veľkosť ===== */
-  --t-eyebrow:.6875rem;  --lh-eyebrow:1.2;   /* 11px · 700 · VERZÁLKY · .08em */
-  --t-sm:.8125rem;       --lh-sm:1.5;        /* 13px · vysvetlivky, popisky   */
-  --t-body:.9375rem;     --lh-body:1.55;     /* 15px · bežný text             */
-  --t-lg:1.0625rem;      --lh-lg:1.4;        /* 17px · nadpis karty, lead     */
+  /* ===== TYPOGRAFIA: rola, 4px mriežka ===== */
+  --t-eyebrow:.75rem;    --lh-eyebrow:1.2;   /* 12px · 700 · VERZÁLKY · .08em */
+  --t-sm:.875rem;        --lh-sm:1.5;        /* 14px · vysvetlivky, popisky   */
+  --t-body:1rem;         --lh-body:1.5;      /* 16px · bežný text, CTA        */
+  --t-lg:1rem;           --lh-lg:1.5;        /* 16px · lead, nadpis karty     */
   --t-h2:1.25rem;        --lh-h2:1.25;       /* 20px · nadpis sekcie          */
   --t-h1:1.75rem;        --lh-h1:1.15;       /* 28px · nadpis obrazovky       */
-  --t-display:clamp(2rem,5vw,2.75rem); --lh-display:1.05;
-  --w-reg:400; --w-semi:600; --w-bold:700; --w-black:800;
+  --t-display:clamp(1.75rem,3.2vw,2.25rem); --lh-display:1.1;
+  --w-reg:400; --w-semi:600; --w-bold:700; --w-black:700;
   --track-eyebrow:.08em; --track-tight:-.02em;
+  --head:#775AC5; --head-ink:#FFFFFF; --head-muted:#F3F0FC;
 
   /* ===== ROZOSTUPY: základ 4px ===== */
   --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem;
   --s5:1.5rem; --s6:2rem; --s7:3rem;
 
   /* ===== POLOMERY ===== */
-  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px;
+  --r-sm:0px; --r-md:0px; --r-lg:0px; --r-xl:0px;
 
   /* ===== ČIARY ===== */
   --bw-hair:1px;      /* deliaca čiara vnútri plochy, dekorácia   */
@@ -46,12 +55,16 @@
   --bw-focus:2px;     /* fokusový prstenec                         */
 
   /* ===== FARBY PODĽA ROLY ===== */
-  --acc:#86EDDD;          /* zelená výplň, vybraté, aktívne       */
+  --acc:#85EEDD;          /* zelená výplň, vybraté, aktívne       */
   --acc-soft:#E6FBF7;     /* zelený nádych, pokojné zvýraznenie   */
   --acc-line:#0A5C54;     /* zelená na text a obrys                */
-  --fig:#6743C2;          /* JEDINÁ rola fialovej: číslo ceny      */
+  --fig:#141817;          /* cena: ink na broskyňovom štítku      */
+  --tri:#9980DD;          /* Itya fialová, geometria              */
+  --tri-deep:#775AC5;     /* pôlnočná, trojuholník / pattern      */
+  --tri-wash:rgba(153,128,221,.07);
+  --hover-lift:0 8px 24px -12px rgba(20,24,23,.16);
 
-  --lift:0 1px 2px rgba(20,24,23,.05), 0 10px 28px -12px rgba(20,24,23,.18);
+  --lift:0 1px 2px rgba(20,24,23,.04), 0 8px 20px -14px rgba(20,24,23,.12);
   --spring-swift:linear(0, 0.022 3.6%, 0.077 7.1%, 0.151 10.7%, 0.235 14.3%, 0.322 17.9%, 0.407 21.4%, 0.488 25%, 0.563 28.6%, 0.63 32.1%, 0.69 35.7%, 0.742 39.3%, 0.787 42.9%, 0.826 46.4%, 0.859 50%, 0.886 53.6%, 0.909 57.1%, 0.928 60.7%, 0.943 64.3%, 0.956 67.9%, 0.966 71.4%, 0.974 75%, 0.98 78.6%, 0.985 82.1%, 0.989 85.7%, 0.992 89.3%, 0.995 92.9%, 0.997 96.4%, 1);
   --spring-swift-ms:280ms;
   --press-color:160ms ease;
@@ -63,12 +76,12 @@
 html,body{margin:0}
 html{background:var(--paper); overflow-x:clip; -webkit-text-size-adjust:100%}
 body{background:var(--paper); color:var(--ink);
-  font-family:"Plus Jakarta Sans", system-ui, -apple-system, Arial, sans-serif;
+  font-family:var(--font-ui);
   font-size:var(--t-body); line-height:1.5; font-weight:var(--w-reg); -webkit-font-smoothing:antialiased;
   min-height:100vh}
 .mono{font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace}
-h1,h2,h3,h4{margin:0; text-wrap:balance}
-h1{font-size:var(--t-display); font-weight:var(--w-black); line-height:1.08; letter-spacing:-.025em}
+h1,h2,h3,h4{margin:0; text-wrap:balance; font-family:var(--font-display); font-weight:var(--w-bold); letter-spacing:var(--track-tight)}
+h1{font-size:var(--t-display); font-weight:var(--w-bold); line-height:var(--lh-display); letter-spacing:-.045em}
 h2{font-size:var(--t-h2); font-weight:var(--w-bold); line-height:1.2}
 h3{font-size:var(--t-lg); font-weight:var(--w-bold); line-height:1.25}
 h4{font-size:var(--t-lg); font-weight:var(--w-bold); line-height:1.25}
@@ -93,64 +106,73 @@ button .ph, a .ph{cursor:pointer}
 .toggle[aria-pressed="true"]{background:var(--anno); border-color:var(--anno); color:#fff}
 
 .stage{padding:0}
-.win{background:var(--frame); min-height:calc(100vh - 1.25rem); overflow-x:clip}
+.win{background:transparent; min-height:calc(100vh - 1.25rem); overflow-x:clip; position:relative}
 
-.sitehead{display:flex; align-items:center; gap:var(--s4); flex-wrap:wrap;
+.sitehead{width:100%; max-width:none; margin:0; padding:0; position:relative; z-index:2;
+  background:var(--head); color:var(--head-ink); border-bottom:0}
+.sitehead-in{display:flex; align-items:center; gap:var(--s4); flex-wrap:wrap;
   max-width:1440px; margin-inline:auto; width:100%;
-  padding:.7rem var(--screen-pad); border-bottom:1px solid var(--line)}
-.logo{height:56px; width:auto; display:block; flex:none; padding:0; margin:0;
-  border:0; background:none; line-height:0; cursor:pointer}
-.logo img{height:56px; width:auto; display:block; filter:url(#knockBlack); pointer-events:none}
-.logo img:not([data-ready]){visibility:hidden}
-.sitenav{display:flex; gap:var(--s4); flex-wrap:wrap; flex:1}
-.sitenav button{background:none; border:0; padding:0; font-size:var(--t-sm); color:var(--ink-2)}
-.sitenav button:hover{color:var(--ink); box-shadow:inset 0 -2px 0 var(--mint-ink)}
-.sitenav button[data-on]{color:var(--ink); font-weight:var(--w-bold); box-shadow:inset 0 -2px 0 var(--mint-ink)}
-.sitenav button.off{color:var(--muted); cursor:default; pointer-events:none; opacity:.45; box-shadow:none}
-.sitenav button.off:hover{color:var(--muted); box-shadow:none}
+  padding:.7rem var(--screen-pad)}
+.sitehead :focus-visible{outline-color:var(--head-ink)}
+.logo{height:auto; width:auto; display:block; flex:none; padding:0; margin:0 var(--s4) 0 0;
+  border:0; background:none; line-height:0; cursor:pointer; color:#fff}
+.logo img{height:36px; width:auto; display:block; pointer-events:none;
+  filter:brightness(0) invert(1)}
+.sitenav{display:flex; gap:var(--s4); flex-wrap:wrap; flex:1; align-items:center}
+.sitenav button{background:none; border:0; padding:0; min-height:36px; font-size:var(--t-body); color:var(--head-ink)}
+.sitenav button:hover{color:var(--head-ink); box-shadow:inset 0 -2px 0 var(--mint)}
+.sitenav button[data-on]{color:var(--head-ink); font-weight:var(--w-bold); box-shadow:inset 0 -2px 0 var(--mint)}
+.sitenav button.off{color:rgba(255,255,255,.88); cursor:default; pointer-events:none; opacity:1; box-shadow:none}
+.sitenav button.off:hover{color:rgba(255,255,255,.88); box-shadow:none}
 
 .outpage{min-height:52vh; display:grid; place-content:center; justify-items:center;
   text-align:center; gap:var(--s3); max-width:38rem; margin-inline:auto; padding:var(--s7) var(--s4) var(--s7)}
 .outpage > .btn{margin-top:var(--s3)}
 .outpage p{color:var(--ink-2); font-size:var(--t-lg); max-width:36ch}
 .outpage .anno{width:100%; max-width:38rem; text-align:left}
-.rating{display:inline-flex; align-items:center; gap:var(--s2); font-size:var(--t-sm); color:var(--ink-2);
-  background:var(--acc-soft); border:1px solid var(--acc-line); border-radius:var(--pill); padding:var(--s1) var(--s2);
-  text-decoration:none}
-.rating b{font-family:"IBM Plex Mono",monospace; color:var(--ink)}
-.stars{color:var(--acc-line); letter-spacing:.1em}
-.hero-mid .rating{margin-top:var(--s1)}
+.rating{display:inline-flex; align-items:center; gap:.55rem; font-size:var(--t-sm); color:var(--ink);
+  background:none; border:0; border-radius:0; padding:0; text-decoration:none; line-height:1.15}
+.rating .glogo{width:22px; height:22px; flex:none}
+.rating-num{font-family:"IBM Plex Mono",monospace; font-size:1.35rem; font-weight:var(--w-bold);
+  letter-spacing:-.04em; line-height:1; color:var(--ink)}
+.rating-meta{display:grid; gap:.15rem; align-content:center}
+.rating-lbl{font-size:var(--t-sm); font-weight:var(--w-semi); color:var(--ink); letter-spacing:.01em}
+.gstars{display:block; width:78px; height:14px}
+.stars{color:#FABB05; letter-spacing:.06em}
+.hero-mid .rating{margin-top:var(--s2)}
 
 .headutil{display:flex; align-items:center; gap:var(--s4); margin-left:auto; flex:none}
-.telchip, .headpin{display:flex; align-items:center; gap:var(--s2); background:var(--fill);
-  border:0; border-radius:var(--pill); padding:var(--s2) var(--s4) var(--s2) var(--s3);
-  text-decoration:none; color:var(--ink); line-height:1.15; min-height:40px;
+.telchip, .headpin{display:flex; align-items:center; gap:var(--s2); background:rgba(255,255,255,.14);
+  border:0; border-radius:var(--pill); padding:0 var(--s4) 0 var(--s3);
+  text-decoration:none; color:var(--head-ink); line-height:1.05; height:36px; min-height:36px;
   font-family:inherit; font-size:var(--t-body); font-weight:var(--w-bold); cursor:pointer; flex:none}
-/* zelený čip dýcha v rovnakom rytme ako káva v 3. kroku */
-.headpin{background:var(--acc-soft); color:var(--acc-line);
-  box-shadow:inset 0 0 0 1px var(--acc-line);
+/* zelený čip dýcha v rovnakom rytme ako káva v 3. kroku; ink na mäťe drží AA */
+.headpin{background:var(--mint); color:var(--ink);
+  box-shadow:inset 0 0 0 1px transparent;
   animation:breath var(--breath) ease-in-out infinite; will-change:transform}
-.headpin:hover{background:var(--acc)}
+.headpin:hover{background:#B7F6EC; color:var(--ink)}
 @keyframes breath{
   0%, 100%{transform:scale(1);
-    box-shadow:inset 0 0 0 1px var(--acc-line), 0 0 0 0 var(--acc-soft)}
+    box-shadow:0 0 0 0 rgba(133,238,221,.0)}
   50%{transform:scale(1.035);
-    box-shadow:inset 0 0 0 1px var(--acc-line), 0 0 0 6px var(--acc-soft)}
+    box-shadow:0 0 0 6px rgba(133,238,221,.35)}
 }
-.telchip svg{flex:none; color:var(--ink)}
+.telchip svg{flex:none; color:inherit}
 .headpin svg{flex:none; color:inherit}
-.telchip b{display:block; font-size:var(--t-body); font-weight:var(--w-bold)}
-.telchip small{display:block; font-size:var(--t-eyebrow); color:var(--muted); font-weight:var(--w-semi); white-space:nowrap}
+.telchip span{display:grid; line-height:1.05}
+.telchip b{display:block; font-size:var(--t-body); font-weight:var(--w-bold); color:var(--head-ink); line-height:1.1}
+.telchip small{display:block; font-size:var(--t-eyebrow); color:var(--head-muted); font-weight:var(--w-semi); white-space:nowrap; line-height:1.1}
 .headpin-txt{font-weight:var(--w-bold)}
-.bagbtn{position:relative; width:36px; height:36px; display:grid; place-items:center;
-  background:none; border:0; color:var(--ink); padding:0; cursor:default}
+.bagbtn{position:relative; width:40px; height:40px; display:grid; place-items:center;
+  background:none; border:0; color:var(--head-ink); padding:0; cursor:default}
+.bagbtn svg{width:24px; height:24px; display:block}
 .bagbtn .n{position:absolute; top:-4px; right:-6px; min-width:18px; height:18px; padding:0 var(--s1);
   background:#E23B2E; color:#fff; border-radius:var(--pill); font-size:var(--t-eyebrow); font-weight:var(--w-bold);
   display:grid; place-items:center; line-height:1}
 
-.screen{max-width:1440px; margin-inline:auto; width:100%; padding:2rem var(--screen-pad) 2.8rem}
-.screen[data-screen="home"]{padding-bottom:var(--s7)}
-.screen[data-screen="home"] > .stack{gap:var(--s7)}
+.screen{max-width:1440px; margin-inline:auto; width:100%; padding:2rem var(--screen-pad) 2.8rem; position:relative; z-index:1}
+.screen[data-screen="home"]{padding-bottom:var(--s7); overflow:visible}
+.screen[data-screen="home"] > .stack{gap:var(--s7); overflow:visible}
 
 /* ---------- primitives ---------- */
 .ph{background:var(--fill); border:1px dashed var(--line-2); display:grid; place-items:center;
@@ -160,23 +182,27 @@ button .ph, a .ph{cursor:pointer}
 .label{font-size:var(--t-sm); font-weight:var(--w-semi); letter-spacing:.04em; color:var(--muted)}
 a.btn{text-decoration:none}
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--s2);
-  --btn-fill:var(--ink); --btn-text:var(--frame); --btn-hover-text:var(--ink);
+  --btn-fill:var(--head); --btn-text:var(--head-ink); --btn-hover-text:var(--head);
   position:relative; isolation:isolate; overflow:hidden;
   background-color:transparent;
   background-image:linear-gradient(var(--btn-fill),var(--btn-fill)), linear-gradient(transparent,transparent);
   background-size:101% 101%, 0 101%;
   background-position:right center; background-repeat:no-repeat;
-  color:var(--btn-text); border:1px solid var(--ink);
-  padding:var(--s3) var(--s4); border-radius:var(--pill); font-weight:var(--w-semi); font-size:var(--t-body);
+  color:var(--btn-text); border:1px solid var(--head);
+  padding:var(--s3) var(--s4); border-radius:0; font-weight:var(--w-semi); font-size:var(--t-body);
   transition:background-size .45s cubic-bezier(.785,.135,.15,.86),
              color .45s cubic-bezier(.785,.135,.15,.86),
              border-color .45s cubic-bezier(.785,.135,.15,.86),
              transform var(--spring-swift-ms) var(--spring-swift)}
+.btn:not(.link):not(.ghost)::before{content:""; width:0; height:0; flex:none;
+  border-style:solid; border-width:.38em 0 .38em .55em;
+  border-color:transparent transparent transparent currentColor}
 @media (pointer:fine) and (prefers-reduced-motion:no-preference){
   .btn:hover:not(:disabled):not(.link){color:var(--btn-hover-text); background-size:0 101%, 101% 101%}
 }
-.btn.ghost{--btn-fill:transparent; --btn-text:var(--ink); --btn-hover-text:var(--frame);
-  background-image:linear-gradient(transparent,transparent), linear-gradient(var(--ink),var(--ink))}
+.btn.ghost{--btn-fill:transparent; --btn-text:var(--head); --btn-hover-text:var(--head-ink);
+  background-image:linear-gradient(transparent,transparent), linear-gradient(var(--head),var(--head));
+  border-color:var(--head)}
 .btn.sm{padding:var(--s2) var(--s3); font-size:var(--t-sm)}
 .btn.link{background:none; background-image:none; overflow:visible; isolation:auto;
   border:0; color:var(--mint-ink); text-decoration:underline;
@@ -223,6 +249,7 @@ a.btn{text-decoration:none}
   0%, 100%{transform:translateY(0)}
   50%{transform:translateY(-6px)}
 }
+#plTitle{margin:0 0 var(--s3)}
 .pl-ask{font-size:var(--t-lg); margin:0 0 var(--s6); max-width:28ch}
 .pl-descr{margin:0 0 var(--s6); display:grid; gap:var(--s2)}
 .pl-descr .row{margin:var(--s2) 0 0; align-items:center}
@@ -248,22 +275,23 @@ a.btn{text-decoration:none}
 .pl-ship-next .btn{width:100%; justify-self:stretch}
 .symlist{display:grid; gap:var(--s4)}
 .symcat-head{display:flex; align-items:center; gap:var(--s3); margin-bottom:var(--s2)}
-.symcat-ph{width:52px; height:52px; flex:none; padding:0; overflow:hidden;
-  border:1px solid var(--line); background:var(--fill-2)}
+.ph.symcat-ph{width:52px; height:52px; flex:none; padding:0; overflow:hidden;
+  border:0; background:transparent}
 .symcat-ph img{display:block; width:100%; height:100%; object-fit:cover}
 .symcat h4{font-size:var(--t-body); font-weight:var(--w-bold)}
 .symcat-grid{--cols:3; --g:.5rem; display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:var(--g); align-items:stretch}
-.symcard{border:1px solid var(--line-2); border-radius:var(--radius); background:var(--frame);
-  display:flex; flex-direction:column; transition:border-color .18s ease, background .18s ease, border-radius .18s ease}
-.symcard:hover{border-color:var(--mint-ink)}
+.symcard{position:relative; border:1px solid var(--line-2); border-radius:var(--radius); background:var(--frame);
+  display:flex; flex-direction:column; overflow:hidden; isolation:isolate;
+  transition:border-color .18s ease, background .18s ease, border-radius .18s ease, transform var(--spring-swift-ms) var(--spring-swift), box-shadow var(--press-color)}
+.symcard:hover{border-color:var(--ink)}
 .symcard[data-on="1"]{border-color:var(--mint-ink); background:var(--mint)}
 .symmain{border:0; background:none; text-align:left; cursor:pointer; width:100%;
   padding:var(--s3) var(--s3) var(--s3); display:grid; grid-template-columns:minmax(0,1fr) auto;
   gap:0 var(--s2); align-items:center}
 .symmain .t{grid-column:1; grid-row:1; font-size:var(--t-sm); font-weight:var(--w-semi); line-height:1.3}
 .symmain .symprice{grid-column:1; grid-row:2; font-family:"IBM Plex Mono",monospace;
-  font-size:var(--t-sm); color:var(--ink)}
+  font-size:var(--t-sm); color:var(--ink); justify-self:start}
 .symcard[data-on="1"] .symmain .symprice{color:var(--ink)}
 .symmain .chev{grid-column:2; grid-row:1 / -1; color:var(--mint-ink); display:grid;
   place-items:center; line-height:0; align-self:center;
@@ -280,7 +308,7 @@ a.btn{text-decoration:none}
   100%{box-shadow:0 0 0 3px transparent}
 }
 .symmore{grid-column:1/-1; position:relative; z-index:1; margin-top:var(--s1);
-  --edge:var(--line-2); --fill:var(--fill-2);
+  --edge:var(--line-2); --fill:var(--paper);
   border:1px solid var(--edge); border-radius:var(--radius);
   background:var(--fill); padding:0;
   display:grid; grid-template-columns:max-content minmax(12rem,1fr); align-items:stretch}
@@ -294,17 +322,18 @@ a.btn{text-decoration:none}
   clip-path:polygon(-2px -2px, calc(100% + 2px) -2px, -2px calc(100% + 2px));
   transform:translateX(-50%) rotate(45deg)}
 .symmore-copy{display:grid; gap:var(--s5); align-content:start; align-self:stretch;
-  position:relative; z-index:2;
+  position:relative; z-index:2; overflow:hidden;
   padding:var(--s4); width:max-content; max-width:28rem; min-width:16rem;
-  border-radius:calc(var(--radius) - var(--bw-line)) 0 0 calc(var(--radius) - var(--bw-line));
-  background:linear-gradient(to right, var(--fill) 0%, var(--paper) 68%)}
+  border-radius:0; background:linear-gradient(to right, var(--fill) 0%, var(--paper) 68%)}
+.symmore-copy > *{position:relative; z-index:1}
 .symmore-copy > .lead{font-size:var(--t-lg); font-weight:var(--w-bold); color:var(--ink); line-height:1.3; margin:0}
 .symmore-pic{position:relative; z-index:2; min-height:14rem; min-width:0; background:var(--frame);
   overflow:hidden; border-radius:0 var(--radius) var(--radius) 0}
 .symmore-pic img{position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover}
 .solalts{display:grid; gap:var(--s2)}
-.solalt{border:1px solid var(--line); border-radius:var(--radius); background:var(--frame);
-  box-shadow:var(--lift); padding:var(--s2) var(--s3); display:grid; gap:var(--s1)}
+.solalt{position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:var(--frame);
+  box-shadow:var(--lift); padding:var(--s2) var(--s3); display:grid; gap:var(--s1);
+  transition:transform var(--spring-swift-ms) var(--spring-swift), border-color var(--press-color), box-shadow var(--press-color)}
 .solalt .n{font-weight:var(--w-semi); font-size:var(--t-sm); line-height:1.35;
   display:flex; justify-content:space-between; gap:var(--s3); align-items:baseline}
 .solalt .n em{font-style:normal; font-family:"IBM Plex Mono",monospace;
@@ -368,10 +397,10 @@ a.btn{text-decoration:none}
 .card h4{font-size:var(--t-lg); margin-bottom:var(--s1)}
 .card p{font-size:var(--t-sm); color:var(--ink-2)}
 .card.acc{background:var(--acc-soft); border-color:var(--acc-line)}
-.card.lead{background:var(--acc-soft); border-color:var(--line-2)}
-button.card{cursor:pointer; box-shadow:none; text-align:left;
-  display:flex; flex-direction:column; align-items:stretch}
-button.card:hover{border-color:var(--mint-ink); background:var(--acc-soft)}
+.card.lead{background:var(--frame); border-color:var(--line)}
+button.card{position:relative; cursor:pointer; box-shadow:none; text-align:left;
+  display:flex; flex-direction:column; align-items:stretch; overflow:hidden; isolation:isolate}
+button.card:hover{border-color:var(--ink); background:var(--paper)}
 .card.is-static{cursor:default; color:var(--ink-2)}
 .card.is-static h4{color:var(--muted); font-weight:var(--w-semi)}
 .card.is-static .ph{opacity:.55}
@@ -383,9 +412,10 @@ button.card:hover{border-color:var(--mint-ink); background:var(--acc-soft)}
 .card-pic img.pic-buy{object-position:center 22%}
 button.card .card-pic{cursor:pointer}
 
-.pick{border:1px solid var(--line-2); border-radius:var(--radius); padding:var(--s3) var(--s4);
-  background:var(--frame); text-align:left; display:grid; gap:var(--s1); width:100%; cursor:pointer}
-.pick:hover{border-color:var(--mint-ink); background:var(--fill-2)}
+.pick{position:relative; border:1px solid var(--line-2); border-radius:var(--radius); padding:var(--s3) var(--s4);
+  background:var(--frame); text-align:left; display:grid; gap:var(--s1); width:100%; cursor:pointer;
+  overflow:hidden; isolation:isolate}
+.pick:hover{border-color:var(--ink); background:var(--paper)}
 .pick[aria-pressed="true"]{border-color:var(--mint-ink); background:var(--mint)}
 .pick[aria-pressed="true"] .d{color:var(--ink-2)}
 .pick .t{font-weight:var(--w-semi); font-size:var(--t-body); display:flex; justify-content:space-between;
@@ -424,7 +454,7 @@ button.card .card-pic{cursor:pointer}
 .walk-upsell:has(.coffee-done:not([hidden])){gap:var(--s5)}
 .coffee-done:not([hidden]){display:grid; gap:var(--s5)}
 .walk-coffee{display:flex; align-items:center; gap:var(--s3); margin:0;
-  font-size:var(--t-lg); font-weight:var(--w-reg); color:var(--ink); line-height:1.3}
+  font-size:var(--t-body); font-weight:var(--w-reg); color:var(--ink); line-height:1.3}
 .walk-coffee-ico{width:52px; height:52px; object-fit:contain; flex:none;
   pointer-events:none; animation:pipeFloatA 7.5s ease-in-out infinite}
 .walk-coffee strong{font-weight:var(--w-black)}
@@ -507,20 +537,49 @@ button.card .card-pic{cursor:pointer}
 body:not(.notes) .anno{display:none}
 
 /* ---------- hero ring ---------- */
-.hero{position:relative; display:grid; min-height:800px; place-items:center; padding-block:var(--s4) var(--s1)}
+.hero{position:relative; display:grid; min-height:800px; place-items:center; padding-block:var(--s4) var(--s1); overflow:hidden}
+.hero-bg{display:none}
+.tri-field{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.tri{position:absolute; width:var(--tri-size,28px); aspect-ratio:74/84;
+  background:var(--tri); clip-path:polygon(50% 0, 100% 100%, 0 100%);
+  opacity:.28; pointer-events:none; will-change:transform}
+.tri.down{clip-path:polygon(0 0, 100% 0, 50% 100%); background:var(--tri-deep); opacity:.22}
+.tri-field .tri{animation:triFloat var(--tri-dur,7s) ease-in-out infinite; animation-delay:var(--tri-delay,0s)}
+.t1{--tri-size:36px; --tri-dur:8.2s; --tri-delay:-1.2s; right:6%; top:6%; opacity:.26}
+.t2{--tri-size:22px; --tri-dur:6.4s; --tri-delay:-2.8s; right:3%; top:18%; opacity:.3}
+.t3{--tri-size:30px; --tri-dur:9s; --tri-delay:-.6s; left:4%; top:12%; opacity:.2}
+.t4{--tri-size:24px; --tri-dur:5.6s; --tri-delay:-3.4s; left:8%; top:28%; opacity:.24}
+.t5{--tri-size:34px; --tri-dur:7.4s; --tri-delay:-1.8s; right:5%; top:36%; opacity:.18}
+.t6{--tri-size:20px; --tri-dur:6s; --tri-delay:-4s; left:3%; top:44%; opacity:.28}
+.t7{--tri-size:28px; --tri-dur:8.6s; --tri-delay:-2.1s; right:7%; top:52%; opacity:.22}
+.t8{--tri-size:18px; --tri-dur:5.2s; --tri-delay:-3.8s; left:6%; top:58%; opacity:.2}
+.t9{--tri-size:32px; --tri-dur:7.8s; --tri-delay:-.9s; right:4%; top:66%; opacity:.16}
+.t10{--tri-size:22px; --tri-dur:6.8s; --tri-delay:-5s; left:2%; top:74%; opacity:.22}
+.t11{--tri-size:26px; --tri-dur:7.1s; --tri-delay:-2.4s; right:9%; top:78%; opacity:.2}
+.t12{--tri-size:16px; --tri-dur:5.8s; --tri-delay:-4.6s; left:10%; top:84%; opacity:.24}
+.t13{--tri-size:30px; --tri-dur:8s; --tri-delay:-1.5s; right:2%; top:90%; opacity:.18}
+.t14{--tri-size:20px; --tri-dur:6.2s; --tri-delay:-3.1s; left:5%; top:96%; opacity:.22}
+@keyframes triFloat{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  40%{transform:translateY(-10px) rotate(6deg)}
+  70%{transform:translateY(-3px) rotate(-4deg)}
+}
+
 .hero .ring{display:block; position:absolute; inset:0; width:100%; height:100%;
   pointer-events:none; z-index:1}
-.hero-mid{display:grid; gap:var(--s4); max-width:480px; justify-items:center; text-align:center;
-  position:relative; z-index:3; grid-row:1; grid-column:1; margin-top:var(--s7)}
-.hero-mid p{color:var(--ink-2); font-weight:var(--w-reg)}
+.hero-mid{display:grid; gap:var(--s4); max-width:34rem; justify-items:center; text-align:center;
+  position:relative; z-index:3; grid-row:1; grid-column:1; margin-top:var(--s7);
+  padding:var(--s5) var(--s4); background:none}
+.hero-mid p{color:var(--ink-2); font-weight:var(--w-reg); max-width:38ch; font-size:var(--t-lg); line-height:1.45}
+.hero-mid p.hint{font-size:var(--t-sm); line-height:var(--lh-sm)}
 .hero-mid h1 .hero-or{font-weight:var(--w-reg); font-size:inherit}
-.hero-mid > .row{margin-top:var(--s4)}
+.hero-mid > .row{margin-top:var(--s4); flex-wrap:nowrap; width:max-content; max-width:100%; justify-content:center}
 .pipe{display:grid; justify-items:center; gap:var(--s1); width:100%}
 .pipe3d{width:72px; height:72px; object-fit:contain; pointer-events:none}
 /* levitujú len prvé dva uzly, dve cesty na začiatku. Zvyšok procesu stojí. */
 .np1 .pipe3d{animation:pipeFloatA 5.5s ease-in-out infinite; will-change:transform}
 .np2 .pipe3d{animation:pipeFloatB 6.8s ease-in-out infinite; animation-delay:-1.9s; will-change:transform}
-.np3 .pipe3d{position:relative; left:-1.6rem}
+.np3 .pipe3d{position:relative; left:.6rem; top:-.15rem}
 .np4 .pipe3d{position:relative; left:-1.8rem}
 .np5 .pipe3d{position:relative; top:-1.4rem}
 @keyframes pipeFloatA{
@@ -551,7 +610,7 @@ body:not(.notes) .anno{display:none}
 .node.end .ic{background:var(--mint); color:var(--ink)}
 .node.end .tx{font-weight:var(--w-semi); color:var(--ink)}
 .node.end .tx small{color:var(--ink-2)}
-.ringnodes{display:block; position:absolute; inset:0; padding:0; z-index:2}
+.ringnodes{display:block; position:absolute; inset:0; padding:0; z-index:2; overflow:visible; pointer-events:none}
 .ringnodes::before{display:none}
 .ringnodes > *{position:absolute; width:210px}
 .np1{left:0; top:2%}
@@ -563,9 +622,14 @@ body:not(.notes) .anno{display:none}
 .branch{display:grid; gap:var(--s2)}
 
 /* ---------- reviews ---------- */
-.revhead{display:flex; align-items:center; gap:var(--s4); flex-wrap:nowrap; height:56px; overflow:hidden}
-.score{display:flex; align-items:baseline; gap:var(--s2); flex:none}
-.score b{font-family:"IBM Plex Mono",monospace; font-size:var(--t-h1); line-height:1}
+.revhead{display:flex; align-items:center; gap:var(--s5); flex-wrap:nowrap; min-height:56px; overflow:hidden}
+.score{display:flex; align-items:center; gap:.65rem; flex:none;
+  text-decoration:none; color:inherit; cursor:pointer}
+.score .glogo{width:28px; height:28px; flex:none}
+.score b{font-family:"IBM Plex Mono",monospace; font-size:var(--t-h1); line-height:1; letter-spacing:-.04em}
+.score-meta{display:grid; gap:.15rem}
+.score-meta .gstars{width:86px; height:16px}
+.score-meta .hint{font-size:var(--t-sm); color:var(--muted); line-height:1.2}
 .revmini{display:grid; grid-template-columns:1fr 1fr; gap:var(--s4) var(--s5); margin-left:auto;
   min-width:0; flex:1; max-width:52rem; height:56px}
 .revmini article{min-width:0; display:grid; align-content:center; gap:0; height:56px}
@@ -576,11 +640,15 @@ body:not(.notes) .anno{display:none}
 .revcard{border:1px solid var(--line); border-radius:var(--radius); padding:var(--s3);
   background:var(--frame); display:grid; gap:var(--s2); box-shadow:var(--lift)}
 .revcard .who{display:flex; align-items:center; gap:var(--s2)}
-.avatar{width:26px; height:26px; border-radius:50%; background:var(--fill);
+.avatar{width:26px; height:26px; border-radius:0; background:var(--fill);
   border:1px dashed var(--line-2); flex:none}
 .gbtn{display:inline-flex; align-items:center; gap:var(--s2); border:1px solid var(--line-2);
   background:var(--frame); border-radius:var(--pill); padding:var(--s2) var(--s4); font-size:var(--t-sm);
-  font-weight:var(--w-semi); color:var(--ink); text-decoration:none; cursor:pointer; flex:none; white-space:nowrap}
+  font-weight:var(--w-semi); color:var(--ink); text-decoration:none; cursor:pointer; flex:none; white-space:nowrap;
+  min-height:40px}
+.intake{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--s2)}
+.intake figure{margin:0; aspect-ratio:4/3; overflow:hidden; border:1px solid var(--line); background:var(--fill)}
+.intake img{display:block; width:100%; height:100%; object-fit:cover}
 .gbtn:hover{border-color:var(--mint-ink); background:var(--fill-2)}
 
 /* ---------- wizard ---------- */
@@ -612,9 +680,10 @@ body:not(.notes) .anno{display:none}
   text-transform:uppercase; color:var(--muted)}
 .total{display:flex; justify-content:space-between; align-items:baseline; border-top:1px solid var(--line-2);
   padding-top:var(--s2); font-weight:var(--w-semi); font-size:var(--t-body); gap:var(--s2)}
-.total em{font-style:normal; font-family:"IBM Plex Mono",monospace; color:var(--fig)}
+.total em{font-style:normal; font-family:"IBM Plex Mono",monospace; color:var(--ink)}
 .sol-panel .total em{
-  font-size:var(--t-h2); font-weight:var(--w-bold); color:var(--fig); letter-spacing:-.02em; line-height:1.15}
+  font-size:var(--t-h2); font-weight:var(--w-bold); color:var(--ink); letter-spacing:-.02em; line-height:1.15;
+  background:var(--peach); padding:.1em .4em}
 .sol-panel .total.total-wait{display:block; font-size:var(--t-sm); font-weight:var(--w-semi);
   line-height:1.35; color:var(--ink-2)}
 .sol-panel .total + .hint{margin-top:var(--s4)}
@@ -652,22 +721,20 @@ body:not(.notes) .anno{display:none}
   padding-bottom:var(--s4); position:relative}
 .tl li:not(:last-child)::before{content:""; position:absolute; left:.8rem; top:1.6rem; bottom:0;
   width:1.5px; background:var(--line-2)}
-.tl .dot{width:1.7rem; height:1.7rem; border-radius:50%; border:1.5px solid var(--line-2);
+.tl .dot{width:1.7rem; height:1.7rem; border-radius:0; border:1.5px solid var(--line-2);
   background:var(--frame); display:grid; place-items:center; font-family:"IBM Plex Mono",monospace;
   font-size:var(--t-eyebrow); color:var(--muted); z-index:1}
-.tl li.done .dot{background:var(--acc); border-color:var(--acc); color:var(--frame)}
+.tl li.done .dot{background:var(--acc); border-color:var(--acc); color:var(--ink)}
 .tl li.now .dot{border-color:var(--ink); border-width:2.5px; color:var(--ink); font-weight:var(--w-semi)}
 .tl h4{font-size:var(--t-body)}
 .tl p{font-size:var(--t-sm); color:var(--muted)}
 .tl li.todo h4{color:var(--muted); font-weight:var(--w-semi)}
 
-.strip{display:flex; gap:var(--s2) var(--s5); flex-wrap:nowrap; padding:var(--s4) 0;
-  border-block:1px solid var(--line); font-size:var(--t-sm); color:var(--ink-2);
-  justify-content:space-between; align-items:center}
-.screen[data-screen="home"] .strip{
-  width:calc(100% + 2 * var(--screen-pad)); max-width:none;
-  margin-left:calc(-1 * var(--screen-pad));
-  box-sizing:border-box; background:var(--fill-2); padding:.95rem var(--screen-pad)}
+.strip{font-size:var(--t-sm); color:var(--ink-2); background:var(--fill-2);
+  border-block:1px solid var(--line);
+  width:100vw; max-width:100vw; margin-left:calc(50% - 50vw); box-sizing:border-box}
+.strip-in{display:flex; gap:var(--s2) var(--s5); flex-wrap:nowrap; justify-content:space-between; align-items:center;
+  max-width:1440px; margin-inline:auto; width:100%; padding:.95rem var(--screen-pad); box-sizing:border-box}
 .strip b{font-family:"IBM Plex Mono",monospace; color:var(--ink)}
 
 table{border-collapse:collapse; width:100%; font-size:var(--t-sm)}
@@ -677,12 +744,13 @@ thead th{background:var(--fill-2); font-size:var(--t-eyebrow); font-weight:var(-
   letter-spacing:.04em; text-transform:uppercase; color:var(--muted)}
 tbody tr:last-child td{border-bottom:0}
 td.n{font-family:"IBM Plex Mono",monospace; white-space:nowrap; color:var(--ink)}
+tr.hl td.n strong{background:var(--peach); padding:.05em .4em; font-weight:var(--w-bold)}
 tr.hl td{background:var(--acc-soft)}
 
 .usps{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--s4) var(--s5);
   text-align:center; padding:var(--s3) 0}
 .usp{display:grid; gap:var(--s2); justify-items:center}
-.usp-ic{width:56px; height:56px; border-radius:50%; background:var(--acc-soft);
+.usp-ic{width:56px; height:56px; border-radius:0; background:var(--acc-soft);
   display:grid; place-items:center; color:#5AD4C4}
 .usp h4{font-size:var(--t-body); font-weight:var(--w-bold); max-width:20ch; line-height:1.3}
 .usp p{font-size:var(--t-sm); color:var(--muted); max-width:22ch; line-height:1.35}
@@ -700,64 +768,75 @@ tr.hl td{background:var(--acc-soft)}
   color:var(--mint-ink); text-decoration:underline; text-underline-offset:2px; font:inherit; font-weight:var(--w-semi)}
 .shipoks{display:flex; flex-wrap:wrap; gap:var(--s1) var(--s4); font-size:var(--t-sm); color:var(--ink-2); margin-bottom:var(--s6)}
 .shipoks span{display:inline-flex; align-items:center; gap:var(--s1)}
-.shipoks i{width:16px; height:16px; border-radius:50%; background:var(--mint); color:var(--ink);
+.shipoks i{width:16px; height:16px; border-radius:0; background:var(--mint); color:var(--ink);
   display:grid; place-items:center; font-size:var(--t-eyebrow); font-style:normal; font-weight:var(--w-bold)}
 .shipband-pic{position:relative; min-height:280px; background:var(--fill-2)}
 .shipband-pic img{position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover}
 
 .spechead{display:grid; gap:var(--s3)}
 .specrail{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--s3)}
-.specard{position:relative; isolation:isolate; overflow:hidden; border:0; padding:0;
-  width:100%; aspect-ratio:3/4; border-radius:var(--r-xl); background:#141817;
-  color:#fff; text-align:left; display:flex; flex-direction:column; justify-content:flex-end;
+.specard{position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--line); padding:0;
+  width:100%; aspect-ratio:3/4; border-radius:var(--r-xl); background:var(--frame);
+  color:var(--ink); text-align:left; display:flex; flex-direction:column; justify-content:flex-end;
   cursor:pointer}
-.specard img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
-.specard-copy{position:relative; z-index:1; display:grid;
+.specard img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+  filter:saturate(.72) brightness(1.28) contrast(.92)}
+.specard::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.55) 38%, var(--paper) 78%)}
+.specard-copy{position:relative; z-index:2; display:grid;
   grid-template-rows:calc(var(--t-lg) * 1.2 * 2) 1fr auto; gap:var(--s1);
-  padding:var(--s4);
-  background:linear-gradient(180deg,transparent 0%,rgba(12,14,14,.5) 32%,rgba(12,14,14,.94) 100%);
-  min-height:58%; align-content:stretch; align-items:start}
-.specard h4{font-size:var(--t-lg); font-weight:var(--w-black); color:#fff; letter-spacing:-.02em; line-height:1.2;
+  padding:var(--s4); height:58%; min-height:58%; box-sizing:border-box;
+  align-content:stretch; align-items:stretch}
+.specard h4{font-size:var(--t-lg); font-weight:var(--w-black); color:var(--ink); letter-spacing:-.02em; line-height:1.2;
+  min-height:calc(var(--t-lg) * 1.2 * 2);
   display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
-.specard p{font-size:var(--t-sm); color:rgba(255,255,255,.84); line-height:1.35; align-self:start}
+.specard p{font-size:var(--t-sm); color:var(--ink-2); line-height:1.35; align-self:start}
 .specard-cta{justify-self:start; align-self:end; margin-top:var(--s1); background:var(--mint); color:var(--ink);
   border-radius:var(--pill); padding:var(--s2) var(--s3); font-size:var(--t-sm); font-weight:var(--w-bold)}
-.specard:hover .specard-cta{background:#fff}
+.specard:hover .specard-cta{background:var(--head); color:var(--head-ink)}
+.specard:hover{border-color:var(--ink)}
 
 .foot{display:none}
 
 /* EDITA press, spring-swift scale on :active */
-.nav button, .toggle, .sitenav button:not(.off), .gbtn, .wsteps button, .pick.chip, .coffee-check, button.logo{
+.nav button, .toggle, .sitenav button:not(.off), .gbtn, .score, .wsteps button, .pick.chip, .coffee-check, button.logo{
   transition:transform var(--spring-swift-ms) var(--spring-swift),
              background-color var(--press-color), color var(--press-color),
              border-color var(--press-color), box-shadow var(--press-color)}
 .pick{
   transition:transform var(--spring-swift-ms) var(--spring-swift),
              background-color var(--press-color), color var(--press-color),
-             border-color var(--press-color)}
+             border-color var(--press-color), box-shadow var(--press-color)}
 button.card, .specard{
   transition:transform var(--spring-swift-ms) var(--spring-swift),
-             background-color var(--press-color), border-color var(--press-color)}
+             background-color var(--press-color), border-color var(--press-color), box-shadow var(--press-color)}
+@media (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .pick:not(.walkin):hover, button.card:hover, .specard:hover, .symcard:hover, .solalt:hover{
+    transform:translateY(-4px); box-shadow:var(--hover-lift)}
+  .pick[aria-pressed="true"]:hover, .symcard[data-on="1"]:hover{
+    border-color:var(--mint-ink); transform:translateY(-2px)}
+}
 .nav button:active, .toggle:active, .sitenav button:not(.off):active,
-.gbtn:active, .wsteps button:active, .pick.chip:active, .coffee-check:active, button.logo:active{transform:scale(.92)}
+.gbtn:active, .score:active, .wsteps button:active, .pick.chip:active, .coffee-check:active, button.logo:active{transform:scale(.92)}
 .btn:active:not(:disabled):not(.link), .pick:not(.chip):not(.walkin):active{transform:scale(.94)}
 button.card:active, .specard:active{transform:scale(.97)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important; transition:none!important}
   .nav button:active, .toggle:active, .sitenav button:not(.off):active,
-  .gbtn:active, .wsteps button:active, .pick.chip:active, button.logo:active,
+  .gbtn:active, .score:active, .wsteps button:active, .pick.chip:active, button.logo:active,
   .btn:active, .pick:active, button.card:active, .specard:active{transform:none}
+  .tri-field .tri{animation:none!important}
 }
 
 @media (max-width:899px){
   :root{--screen-pad:1.25rem}
   .toggle{flex:none}
-  .sitehead{display:grid; grid-template-columns:auto 1fr; grid-template-areas:"logo util" "nav nav";
+  .sitehead-in{display:grid; grid-template-columns:auto 1fr; grid-template-areas:"logo util" "nav nav";
     align-items:center; gap:var(--s1) var(--s2);
     padding:.55rem max(var(--screen-pad), env(safe-area-inset-right,0px)) .55rem max(var(--screen-pad), env(safe-area-inset-left,0px))}
-  .logo{height:40px; grid-area:logo}
-  .logo img{height:40px}
+  .logo{height:auto; grid-area:logo; margin-right:0}
+  .logo img{height:28px}
   .headutil{grid-area:util; justify-self:end; gap:var(--s2); margin-left:0}
   .sitenav{grid-area:nav; gap:var(--s1) var(--s3)}
   .sitenav button{min-height:44px; padding:var(--s1) 0}
@@ -768,8 +847,10 @@ button.card:active, .specard:active{transform:scale(.97)}
   .screen[data-screen="home"]{padding-bottom:var(--s7)}
   .screen[data-screen="home"] > .stack{gap:var(--s6)}
   .hero{min-height:0; padding-block:0; place-items:stretch}
+  .hero-bg{display:none}
   .hero .ring{display:none}
-  .hero-mid{max-width:none; width:100%; margin-top:0}
+  .hero-mid{max-width:none; width:100%; margin-top:0; padding:0; background:none; box-shadow:none}
+  .hero-mid > .row{width:100%; max-width:none; flex-wrap:wrap}
   .ringnodes{position:static; display:grid; gap:var(--s2); margin-top:var(--s4)}
   .ringnodes > *{position:static; width:auto}
   .pipe{grid-template-columns:44px minmax(0,1fr); justify-items:stretch; align-items:center; gap:var(--s2)}
@@ -792,12 +873,13 @@ button.card:active, .specard:active{transform:scale(.97)}
   .symcat-grid{--cols:2; grid-template-columns:1fr 1fr}
   .shipband-pic{order:-1; min-height:200px}
   .shipband-copy{padding:var(--s5) var(--s4)}
-  .revhead{height:auto; flex-wrap:wrap; overflow:visible; align-items:flex-start}
+  .revhead{height:auto; flex-wrap:wrap; overflow:visible; align-items:center}
+  .intake{grid-template-columns:1fr 1fr}
   .revmini{height:auto; max-width:none; margin-left:0; width:100%; flex:1 1 100%}
   .revmini article{height:auto}
   .revmini p{white-space:normal; overflow:visible; text-overflow:unset}
   .gbtn{white-space:normal}
-  .strip{flex-wrap:wrap; justify-content:flex-start; gap:var(--s2) var(--s4)}
+  .strip-in{flex-wrap:wrap; justify-content:flex-start; gap:var(--s2) var(--s4)}
   .tw{overflow-x:auto}
   .input{font-size:var(--t-lg)}
   #q{max-width:none!important}
@@ -819,8 +901,7 @@ button.card:active, .specard:active{transform:scale(.97)}
   .pl-descr .btn, .symmore-foot .btn{width:100%; justify-self:stretch}
   .symmore{grid-template-columns:1fr}
   .symmore-copy{width:auto; max-width:none; min-width:0;
-    border-radius:0 0 calc(var(--radius) - var(--bw-line)) calc(var(--radius) - var(--bw-line));
-    background:linear-gradient(to top, var(--fill) 0%, var(--paper) 68%)}
+    border-radius:0; background:linear-gradient(to top, var(--fill) 0%, var(--paper) 68%)}
   .symmore-pic{min-height:11rem; order:-1; border-radius:var(--radius) var(--radius) 0 0}
   .pl-box .btn{width:100%; justify-self:stretch; align-self:stretch}
   .screen .row:has(> .btn:not(.link)){flex-direction:column; align-items:stretch}
@@ -838,6 +919,7 @@ button.card:active, .specard:active{transform:scale(.97)}
 body{font-size:var(--t-body); line-height:var(--lh-body)}
 h1,h2,h3,h4{letter-spacing:var(--track-tight); text-wrap:balance}
 h1{font-size:var(--t-h1); line-height:var(--lh-h1); font-weight:var(--w-bold)}
+.hero-mid h1{font-size:var(--t-display); line-height:var(--lh-display); letter-spacing:-.045em}
 h2{font-size:var(--t-h2); line-height:var(--lh-h2); font-weight:var(--w-bold)}
 h3{font-size:var(--t-lg); line-height:var(--lh-lg); font-weight:var(--w-bold)}
 h4{font-size:var(--t-body); line-height:var(--lh-lg); font-weight:var(--w-bold)}
@@ -857,9 +939,10 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
 
 /* ---- fokus: jeden prstenec pre celý prototyp ---- */
 :focus-visible{outline:var(--bw-focus) solid var(--acc-line); outline-offset:2px; border-radius:var(--r-sm)}
+.sitehead :focus-visible{outline:var(--bw-focus) solid var(--head-ink); outline-offset:2px}
 
 /* ---- obrysy: čiara vnútri plochy je dekorácia, obrys ovládacieho prvku nie ---- */
-button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
+<button.card, a.card, .pick, .symcard, .pl-box, .tiers{
   border-color:var(--line-2)}
 .sep, .rrow + .rrow, .tier-row + .tier-row{border-color:var(--line)}
 
@@ -869,12 +952,6 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
 .btn.link{font-size:var(--t-sm); font-weight:var(--w-semi)}
 
 </style>
-
-<svg width="0" height="0" aria-hidden="true" style="position:absolute">
-  <filter id="knockBlack" color-interpolation-filters="sRGB">
-    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0.22 0.72 0.06 0 0"/>
-  </filter>
-</svg>
 
 <div class="bar">
   <div class="bar-in">
@@ -886,9 +963,26 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
 
 <div class="stage">
   <div class="win">
+    <div class="tri-field" aria-hidden="true">
+      <span class="tri t1"></span>
+      <span class="tri down t2"></span>
+      <span class="tri t3"></span>
+      <span class="tri down t4"></span>
+      <span class="tri t5"></span>
+      <span class="tri down t6"></span>
+      <span class="tri t7"></span>
+      <span class="tri down t8"></span>
+      <span class="tri t9"></span>
+      <span class="tri down t10"></span>
+      <span class="tri t11"></span>
+      <span class="tri down t12"></span>
+      <span class="tri t13"></span>
+      <span class="tri down t14"></span>
+    </div>
     <div class="sitehead">
+      <div class="sitehead-in">
       <button type="button" class="logo" data-go="home" aria-label="itya, úvodná stránka">
-        <img src="itya-logo.webp" alt="" width="96" height="56">
+        <img src="itya-mark.svg" alt="" width="1080" height="509">
       </button>
       <nav class="sitenav" id="sitenav">
         <button data-nav="servis" data-channel="choose" data-go="picker">Servis</button>
@@ -913,12 +1007,13 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
           <span class="headpin-txt">Kde nás nájdeš</span>
         </button>
         <button type="button" class="bagbtn" tabindex="-1" title="Mimo rozsahu prototypu, nie je klikateľné" aria-label="Košík">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M6.5 8.5h11l-1 11.2H7.5l-1-11.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
             <path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
           </svg>
           <span class="n">6</span>
         </button>
+      </div>
       </div>
     </div>
 
@@ -927,6 +1022,7 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       <div class="stack">
 
         <div class="hero" id="hero">
+          <div class="hero-bg" aria-hidden="true"></div>
           <svg class="ring" id="ring" aria-hidden="true"></svg>
 
           <div class="hero-mid">
@@ -942,8 +1038,26 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
             </div>
             <p class="hint">Bez registrácie. <span class="lede-em">Neplatíš nič dopredu. Platíš až po schválení ceny.</span></p>
             <a class="rating" target="_blank" rel="noopener noreferrer"
-               href="https://www.google.com/search?q=itya">
-              <span class="stars">★★★★★</span> <b>4,9</b> · Google
+               href="https://www.google.com/search?q=itya" aria-label="4,9 · Hodnotenie na Google">
+              <svg class="glogo" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span class="rating-num">4,9</span>
+              <span class="rating-meta">
+                <span class="rating-lbl">Hodnotenie na Google</span>
+                <svg class="gstars" viewBox="0 0 88 16" aria-hidden="true">
+                  <g fill="#FABB05">
+                    <path d="M8 1.2 9.9 6l5.1.4-3.9 3.3 1.2 4.9L8 11.6 3.7 14.6l1.2-4.9L1 6.4 6.1 6z"/>
+                    <path d="M26 1.2 27.9 6l5.1.4-3.9 3.3 1.2 4.9L26 11.6 21.7 14.6l1.2-4.9L19 6.4 24.1 6z"/>
+                    <path d="M44 1.2 45.9 6l5.1.4-3.9 3.3 1.2 4.9L44 11.6 39.7 14.6l1.2-4.9L37 6.4 42.1 6z"/>
+                    <path d="M62 1.2 63.9 6l5.1.4-3.9 3.3 1.2 4.9L62 11.6 57.7 14.6l1.2-4.9L55 6.4 60.1 6z"/>
+                    <path d="M80 1.2 81.9 6l5.1.4-3.9 3.3 1.2 4.9L80 11.6 75.7 14.6l1.2-4.9L73 6.4 78.1 6z"/>
+                  </g>
+                </svg>
+              </span>
             </a>
           </div>
 
@@ -978,20 +1092,37 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
         <div class="anno"><span class="label">Poznámka 01 · Ukážeme postup, nie sľuby</span><p>Slogan je nadpis aj rozcestník: príď alebo pošli. Okolo neho beží postup, ktorý ukazuje, že prísť osobne (bez objednania) a poslať sú dve cesty tým istým procesom. Nie dve rôzne služby. Prvé dva uzly kruhu sú práve tie dve cesty, od tretieho uzla je proces spoločný.</p><p><em>Prečo:</em> Kto posiela telefón za 800 € cudzím ľuďom, nerieši najprv cenu. Rieši, čo sa s ním bude diať. Kto príde, nech vidí, že objednávka nie je podmienka.</p><p><em>Podopiera to:</em> Nielsen Norman Group radí ukázať kroky vtedy, keď človek robí niečo prvýkrát, robí to zriedka a nerozumie tomu odborne. To je oprava telefónu presne. Číslo k tomu neuvádzajú, je to odporúčanie, nie meranie. (Pravidlo 7 v dokumente.)</p><p><em>Pozor:</em> Ani jedno z dvoch tlačidiel v hero už spôsob doručenia nepredvyberá. „Ponuka opráv“ vedie na výber zariadenia, „Ako poslať zariadenie“ len posunie na pás nižšie. Rozcestník je v kruhu a v texte, nie v tlačidle, kto ešte nevie, čo chce, nemá byť nikam zatlačený.</p><p><em>Vymyslené:</em> Nič. Čísla 35 000+, 95 % a 4,9 sú tie, ktoré ITYA dnes uvádza na svojom webe.</p></div>
 
         <div class="strip">
+          <div class="strip-in">
           <span><b>35 000+</b> opravených zariadení</span>
           <span><b>95 %</b> úspešnosť opráv</span>
           <span>Záruka <b>6–12</b> mesiacov</span>
           <span>Diagnostika <b>zdarma</b> pri oprave</span>
+          </div>
         </div>
 
         <div class="revhead">
-          <div class="score">
+          <a class="score" target="_blank" rel="noopener noreferrer"
+             href="https://www.google.com/search?sca_esv=6511eabd1253659d&rlz=1C5CHFA_enSK1137SK1137&sxsrf=APpeQnspASO0Y7-soUrt7_eVq6VnZry05g:1789467757264&q=itya&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_300tJdzU4yEkwViRXG1dsw_-_opYMQ6LnChBv7exWXxrKEHSFCxBt3RjcJx2yZY-5veJoM%3D&uds=AJ5uw18ZK8D7VoKbabVxVkWF2LYBM-Hs6-dXy_oELc8LEp9HHV5NoWiZocXwKRigkS6Awei4dkpTcHsIrOoDxuMeHuecATGwUtMSl47LZtFSZqH1yH0zx0c&sa=X&ved=2ahUKEwinsYjwrvCWAxVMhv0HHYsrCz8Q3PALegQINhAF"
+             aria-label="4,9 z 400+ recenzií na Google">
+            <svg class="glogo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
             <b>4,9</b>
-            <span><span class="stars">★★★★★</span><br><span class="hint">z 400+ recenzií na Google</span></span>
-          </div>
-          <a class="gbtn" target="_blank" rel="noopener noreferrer"
-             href="https://www.google.com/search?sca_esv=6511eabd1253659d&rlz=1C5CHFA_enSK1137SK1137&sxsrf=APpeQnspASO0Y7-soUrt7_eVq6VnZry05g:1789467757264&q=itya&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_300tJdzU4yEkwViRXG1dsw_-_opYMQ6LnChBv7exWXxrKEHSFCxBt3RjcJx2yZY-5veJoM%3D&uds=AJ5uw18ZK8D7VoKbabVxVkWF2LYBM-Hs6-dXy_oELc8LEp9HHV5NoWiZocXwKRigkS6Awei4dkpTcHsIrOoDxuMeHuecATGwUtMSl47LZtFSZqH1yH0zx0c&sa=X&ved=2ahUKEwinsYjwrvCWAxVMhv0HHYsrCz8Q3PALegQINhAF">
-            <span class="mono" style="font-weight:700">G</span> Prečítať všetky recenzie na Google ↗
+            <span class="score-meta">
+              <svg class="gstars" viewBox="0 0 88 16" aria-hidden="true">
+                <g fill="#FABB05">
+                  <path d="M8 1.2 9.9 6l5.1.4-3.9 3.3 1.2 4.9L8 11.6 3.7 14.6l1.2-4.9L1 6.4 6.1 6z"/>
+                  <path d="M26 1.2 27.9 6l5.1.4-3.9 3.3 1.2 4.9L26 11.6 21.7 14.6l1.2-4.9L19 6.4 24.1 6z"/>
+                  <path d="M44 1.2 45.9 6l5.1.4-3.9 3.3 1.2 4.9L44 11.6 39.7 14.6l1.2-4.9L37 6.4 42.1 6z"/>
+                  <path d="M62 1.2 63.9 6l5.1.4-3.9 3.3 1.2 4.9L62 11.6 57.7 14.6l1.2-4.9L55 6.4 60.1 6z"/>
+                  <path d="M80 1.2 81.9 6l5.1.4-3.9 3.3 1.2 4.9L80 11.6 75.7 14.6l1.2-4.9L73 6.4 78.1 6z"/>
+                </g>
+              </svg>
+              <span class="hint">z 400+ recenzií na Google</span>
+            </span>
           </a>
           <div class="revmini">
             <article>
@@ -1177,10 +1308,9 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
             <img src="itya-pipe-coffee.png" alt="" width="144" height="144">
           </button>
         </div>
-        <h1 id="plTitle">Oprava</h1>
-
         <div class="pl-layout">
           <div>
+            <h1 id="plTitle">Oprava</h1>
             <h3 class="pl-ask">Aké závady má tvoje zariadenie?</h3>
             <div class="pl-descr" id="descrWrap">
               <p class="pl-descr-head">Popíš tvoj prípad vlastnými slovami alebo vyber možnosti, ktoré ho najlepšie vystihujú.</p>
@@ -1223,11 +1353,12 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
         <div class="ctx" data-ctx></div>
         <div>
           <span class="label">Doručenie</span>
-          <h1 style="margin-top:var(--s1)">Ako to chceš vybaviť?</h1>
-          <p class="hint" style="margin-top:var(--s1); max-width:62ch">Vyber si spôsob. <span class="lede-em">Cena opravy je v oboch prípadoch rovnaká.</span></p>
-        </div>
-        <div class="pl-layout">
+          <div class="pl-layout" style="margin-top:var(--s1)">
           <div class="stack">
+            <div>
+              <h1>Ako to chceš vybaviť?</h1>
+              <p class="hint" style="margin-top:var(--s1); max-width:62ch">Vyber si spôsob. <span class="lede-em">Cena opravy je v oboch prípadoch rovnaká.</span></p>
+            </div>
             <div class="fu-opts">
               <span class="badge">Celé Slovensko</span>
               <div id="fulfil"></div>
@@ -1237,6 +1368,7 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
           </div>
           <div class="pl-rail">
             <aside class="sol-panel" id="fuRecap"></aside>
+          </div>
           </div>
         </div>
       </div>
@@ -1350,7 +1482,12 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
           </table>
         </div>
 
-        <div class="ph" style="height:110px">fotky zariadenia pri príjme · 4 ks</div>
+        <div class="intake" aria-label="Fotky zariadenia pri príjme, 4 kusy">
+          <figure><img src="itya-intake-front.png" alt="Predná strana: prasknutý displej" width="640" height="480"></figure>
+          <figure><img src="itya-intake-close.png" alt="Detail praskliny na displeji" width="640" height="480"></figure>
+          <figure><img src="itya-intake-back.png" alt="Zadná strana zariadenia pri príjme" width="640" height="480"></figure>
+          <figure><img src="itya-intake-unbox.png" alt="Zariadenie po rozbalení na predajni" width="640" height="480"></figure>
+        </div>
         <p class="hint" style="margin-top:var(--s2)">Fotky sme spravili pri prevzatí, aby sme mali zapísaný stav zariadenia. Do zariadenia sme nevstupovali. <button class="btn link" data-go="data">Ako pracujeme s tvojimi dátami →</button></p>
 
         <div class="anno"><span class="label">Poznámka 16 · Fotky pri príjme</span><p>Stav zariadenia, IMEI a fotky pri prevzatí. Pod nimi je napísané, prečo sme ich robili a že do zariadenia sme nevstupovali.</p><p><em>Prečo:</em> Keď zákazník príde osobne, stav svojho telefónu vidí na vlastné oči. Keď ho pošle, nevidí nič. Bez záznamu sa spor o poškriabaný rám nedá vyhrať.</p><p><em>Pozor:</em> Fotky sú dvojsečné, sú dôkaz pre nás aj pripomienka, že niekto zariadenie držal v ruke. Preto k nim patrí veta, čo fotíme a čo nie, a prelink na stránku o dátach. Bez nej fotky obavu zvyšujú, nie znižujú.</p><p><em>Vymyslené:</em> Nič, ale nie je to funkcia webu, je to krok v prevádzke. Musí byť v procese od prvého dňa, inak ho pri prvom spore nemáme.</p></div>
@@ -1739,14 +1876,41 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var hero = $("#hero"), svg = $("#ring");
     if(!hero || getComputedStyle(svg).display === "none") return;
     var hr = hero.getBoundingClientRect();
-    function cardPt(el){
+    function cardBox(el){
       var card = el.querySelector(":scope > .pipe > .node, :scope > .node") || el;
       var r = card.getBoundingClientRect();
       return {
+        l: r.left - hr.left,
+        r: r.right - hr.left,
+        t: r.top - hr.top,
+        b: r.bottom - hr.top,
         x: r.left - hr.left + r.width/2,
-        y: r.top - hr.top + r.height/2,
-        right: r.right - hr.left
+        y: r.top - hr.top + r.height/2
       };
+    }
+    function dock(box, towardX, towardY){
+      var dx = towardX - box.x, dy = towardY - box.y;
+      if(Math.abs(dx) >= Math.abs(dy)){
+        return {x: dx >= 0 ? box.r : box.l, y: box.y};
+      }
+      return {x: box.x, y: dy >= 0 ? box.b : box.t};
+    }
+    function crosses(box, x, y){
+      return x > box.l && x < box.r && y > box.t && y < box.b;
+    }
+    function linkCards(A, B){
+      var out = dock(A, B.x, B.y);
+      var inn = dock(B, A.x, A.y);
+      if(Math.abs(out.x - inn.x) < 3 || Math.abs(out.y - inn.y) < 3){
+        return [out, inn];
+      }
+      var above = Math.min(A.t, B.t) - 18;
+      var below = Math.max(A.b, B.b) + 18;
+      var y = (out.y + inn.y) / 2;
+      if(crosses(A, out.x, y) || crosses(B, inn.x, y) || crosses(A, (out.x+inn.x)/2, y) || crosses(B, (out.x+inn.x)/2, y)){
+        y = above > 24 ? above : below;
+      }
+      return [out, {x:out.x, y:y}, {x:inn.x, y:y}, inn];
     }
     function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
     function sgn(n){ return n < 0 ? -1 : n > 0 ? 1 : 0; }
@@ -1771,9 +1935,28 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var n1 = $(".np1"), n2 = $(".np2"), n3 = $(".np3"), n4 = $(".np4"), n5 = $(".np5"), n6 = $(".np6");
     if(!n1 || !n2 || !n3 || !n4 || !n5 || !n6) return;
     svg.setAttribute("viewBox","0 0 "+hr.width+" "+hr.height);
-    var a = cardPt(n1), b = cardPt(n2), p3 = cardPt(n3), p4 = cardPt(n4), p5 = cardPt(n5), p6 = cardPt(n6);
-    var xJoin = Math.max(a.right, b.right) + 48;
+    var a = cardBox(n1), b = cardBox(n2), p3 = cardBox(n3), p4 = cardBox(n4), p5 = cardBox(n5), p6 = cardBox(n6);
+    function iconBox(el){
+      var img = el.querySelector(".pipe3d");
+      if(!img) return null;
+      var r = img.getBoundingClientRect();
+      return {l:r.left-hr.left-10, r:r.right-hr.left+10, t:r.top-hr.top-10, b:r.bottom-hr.top+10};
+    }
+    var nodes = [a,b,p3,p4,p5,p6];
+    var avoid = nodes.concat([n1,n2,n3,n4,n5,n6].map(iconBox).filter(Boolean));
+    var lupa = iconBox(n3);
+    var mid = $(".hero-mid");
+    var midBox = mid ? mid.getBoundingClientRect() : null;
+    var pad = 24;
+    var midL = midBox ? (midBox.left - hr.left - pad) : hr.width * .32;
+    var midR = midBox ? (midBox.right - hr.left + pad) : hr.width * .68;
+    var midT = midBox ? (midBox.top - hr.top - pad) : hr.height * .22;
+    var xJoin = Math.min(Math.max(a.r, b.r) + 48, midL - 8);
     var yJoin = (a.y + b.y) / 2;
+    var yOver = Math.max(36, midT - 8);
+    var dropX = midR;
+    if(lupa && dropX > lupa.l && dropX < lupa.r) dropX = lupa.l - 16;
+    if(lupa && p3.x > lupa.l && p3.x < lupa.r && yOver < lupa.b) dropX = Math.min(dropX, lupa.l - 16);
     function trail(raw){
       var wps = [];
       raw.forEach(function(p){
@@ -1803,28 +1986,51 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       return out;
     }
     var forkA = trail([
-      {x:a.x, y:a.y},
+      {x:a.r, y:a.y},
       {x:xJoin, y:a.y},
       {x:xJoin, y:yJoin}
     ]);
     var forkB = trail([
-      {x:b.x, y:b.y},
+      {x:b.r, y:b.y},
       {x:xJoin, y:b.y},
       {x:xJoin, y:yJoin}
     ]);
-    var main = trail(chain([
+    var in3 = dock(p3, dropX, yOver);
+    var to3 = trail(chain([
       {x:xJoin, y:yJoin},
-      {x:p3.x, y:p3.y},
-      {x:p4.x, y:p4.y},
-      {x:p5.x, y:p5.y},
-      {x:p6.x, y:p6.y}
+      {x:xJoin, y:yOver},
+      {x:dropX, y:yOver},
+      in3
     ]));
-    var stroke = 'fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="6 7" stroke-linecap="round"';
+    var hops = [linkCards(p3, p4), linkCards(p4, p5), linkCards(p5, p6)].map(function(pts){
+      return trail(chain(pts));
+    });
     svg.innerHTML =
-      '<path d="'+forkA+'" '+stroke+'/>' +
-      '<path d="'+forkB+'" '+stroke+'/>' +
-      '<path d="'+main+'" '+stroke+'/>' +
-      '<circle cx="'+xJoin+'" cy="'+yJoin+'" r="5" fill="var(--ink)"/>';
+      '<path class="ring-path" fill="none" stroke="none" d="'+forkA+'"/>' +
+      '<path class="ring-path" fill="none" stroke="none" d="'+forkB+'"/>' +
+      '<path class="ring-path" fill="none" stroke="none" d="'+to3+'"/>' +
+      hops.map(function(d){ return '<path class="ring-path" fill="none" stroke="none" d="'+d+'"/>'; }).join("");
+    var step = 22;
+    var arrows = "";
+    var paths = svg.querySelectorAll(".ring-path");
+    for(var i = 0; i < paths.length; i++){
+      var path = paths[i];
+      var len = path.getTotalLength();
+      if(!len) continue;
+      for(var s = step * .4; s < len - 8; s += step){
+        var p = path.getPointAtLength(s);
+        var q = path.getPointAtLength(Math.min(len, s + 8));
+        var hit = false;
+        for(var k = 0; k < avoid.length; k++){
+          var box = avoid[k];
+          if(p.x > box.l && p.x < box.r && p.y > box.t && p.y < box.b){ hit = true; break; }
+        }
+        if(hit) continue;
+        var ang = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI;
+        arrows += '<polygon points="-6,-4.5 8,0 -6,4.5" transform="translate('+p.x+','+p.y+') rotate('+ang+')" fill="var(--tri-deep)"/>';
+      }
+    }
+    svg.innerHTML += arrows;
   }
 
   /* ---------- context ---------- */
@@ -2263,12 +2469,27 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var nx = $("#plNext"); if(nx && !nx.hidden) enterKids(nx);
     var refurb = $("#refurbOffer"); if(refurb && !refurb.hidden) enterKids(refurb);
   }
+  function revealExpand(el){
+    if(!el || el.hidden) return;
+    requestAnimationFrame(function(){
+      if(!el.isConnected || el.hidden || el.closest("[hidden]")) return;
+      var gap = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      var extra = el.getBoundingClientRect().bottom + gap - window.innerHeight;
+      if(extra <= 0) return;
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollBy({top: extra, behavior: reduce ? "auto" : "smooth"});
+    });
+  }
+  function revealSymMore(box){ revealExpand(box); }
   function openSym(id){
     state.open = (state.open === id) ? null : id;
     renderSymptoms();
     if(state.open === id){
       var box = document.querySelector('[data-more="'+id+'"]');
-      if(box) enterKids(box);
+      if(box){
+        enterKids(box);
+        revealExpand(box);
+      }
     }
   }
   function addDescr(){
@@ -2955,6 +3176,10 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var shown = document.querySelector('.screen[data-screen="'+id+'"]');
     playEnter(shown);
     if(id === "home") requestAnimationFrame(drawRing);
+    if(id === "status"){
+      var stRet = $("#stReturn");
+      if(stRet && !stRet.hidden) revealExpand(stRet);
+    }
   }
 
   function setFulfil(id){
@@ -2971,9 +3196,13 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       enterKids($("#fuRecap"));
       enterKids($("#fulfil"));
     }
-    if(state.screen === "wizard") enterKids($("#branch"));
+    if(state.screen === "wizard"){ enterKids($("#branch")); revealExpand($("#branch")); }
     if(state.screen === "confirm") renderConfirm();
-    if(state.screen === "status") renderStatus();
+    if(state.screen === "status"){
+      renderStatus();
+      var liveRet = $("#stReturn");
+      if(liveRet && !liveRet.hidden) revealExpand(liveRet);
+    }
   }
 
   var tailTimer = null;
@@ -3089,7 +3318,9 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({event: coffeeBtn.getAttribute("data-convert") || "store_visit"});
       renderCoffee();
-      enterKids(box && box.closest(".pl-box"));
+      var coffeeHost = box && box.closest(".pl-box");
+      enterKids(coffeeHost);
+      revealExpand(coffeeHost);
       return;
     }
     if(t.closest("[data-coffee-edit]")){
@@ -3163,18 +3394,22 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
       show("pricelist"); return; }
     var br = t.closest("[data-brand]");
     if(br){ state.brand = br.getAttribute("data-brand"); state.series = null;
-      renderPicker(); enterKids($("#series")); enterKids($("#models")); return; }
+      renderPicker(); enterKids($("#series")); enterKids($("#models"));
+      revealExpand($("#series")); return; }
     var se = t.closest("[data-series]");
     if(se){ state.series = se.getAttribute("data-series");
-      renderPicker(); enterKids($("#models")); return; }
+      renderPicker(); enterKids($("#models"));
+      revealExpand($("#models")); return; }
 
     var zb = t.closest("[data-zbox]");
-    if(zb){ state.returnBox = zb.getAttribute("data-zbox"); state.returnOk = false; renderReturnPlace(); enterKids($("#stReturn") || $("#quoteResult")); return; }
+    if(zb){ state.returnBox = zb.getAttribute("data-zbox"); state.returnOk = false; renderReturnPlace();
+      var zbox = $("#stReturn") || $("#quoteResult"); enterKids(zbox); revealExpand(zbox); return; }
     if(t.closest("[data-return-ok]")){
       if(!state.returnBox) return;
-      state.returnOk = true; renderReturnPlace(); enterKids($("#stReturn") || $("#quoteResult")); return;
-    }
-    if(t.closest("[data-return-edit]")){ state.returnOk = false; renderReturnPlace(); enterKids($("#stReturn") || $("#quoteResult")); return; }
+      state.returnOk = true; renderReturnPlace();
+      var zok = $("#stReturn") || $("#quoteResult"); enterKids(zok); revealExpand(zok); return; }
+    if(t.closest("[data-return-edit]")){ state.returnOk = false; renderReturnPlace();
+      var zed = $("#stReturn") || $("#quoteResult"); enterKids(zed); revealExpand(zed); return; }
 
     var symOff = t.closest("[data-symoff]");
     if(symOff){ setSym(symOff.getAttribute("data-symoff"), false); return; }
@@ -3206,6 +3441,7 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
         b.setAttribute("aria-pressed", b.getAttribute("data-insure") === state.insure ? "true":"false");
       });
       enterKids($("#branch"));
+      revealExpand($("#branch"));
       return;
     }
 
@@ -3241,14 +3477,25 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     var q = t.closest("[data-quote]");
     if(q && !q.hasAttribute("data-quote-ok") && !q.hasAttribute("data-quote-back")){
       var kind = q.getAttribute("data-quote");
-      if(kind === "partial" || kind === "no"){ showQuoteConfirm(kind); enterKids($("#quoteConfirm")); return; }
-      applyQuote(kind); enterKids($("#quoteResult")); return;
+      if(kind === "partial" || kind === "no"){ showQuoteConfirm(kind); enterKids($("#quoteConfirm")); revealExpand($("#quoteConfirm")); return; }
+      applyQuote(kind); enterKids($("#quoteResult")); revealExpand($("#quoteResult")); return;
     }
-    if(t.closest("[data-quote-ok]")){ applyQuote(pendingQuote); enterKids($("#quoteResult")); return; }
+    if(t.closest("[data-quote-ok]")){ applyQuote(pendingQuote); enterKids($("#quoteResult")); revealExpand($("#quoteResult")); return; }
     if(t.closest("[data-quote-back]")){ resetQuote(); enterKids($("#quoteActions")); return; }
   });
 
-  $("#q").addEventListener("input", function(){ renderModels(); enterKids($("#models")); });
+  $("#q").addEventListener("input", function(){
+    var wrap = $("#modelsWrap");
+    var wasOn = wrap && !wrap.hidden;
+    renderModels();
+    enterKids($("#models"));
+    if(!wasOn) revealExpand($("#models"));
+  });
+  document.addEventListener("toggle", function(e){
+    var d = e.target;
+    if(!d || d.tagName !== "DETAILS" || !d.open) return;
+    revealExpand(d.closest(".symmore") || d);
+  }, true);
   $("#descr").addEventListener("input", function(e){
     state.descr = e.target.value;
     if(!e.target.value.trim() && state.noted){
@@ -3325,42 +3572,6 @@ button.card, a.card, .pick, .symcard, .specard, .pl-box, .tiers{
     if(!/^(Prečo|Podopiera to|Vymyslené|Pozor|Princíp|Dôkaz|Vzorový obsah):?\s*$/.test(em.textContent.trim())) return;
     em.classList.add("anno-k");
   });
-  (function armLogo(){
-    var btn = document.querySelector("button.logo");
-    var img = btn && btn.querySelector("img");
-    if(!img) return;
-    var live = "itya-logo.webp";
-    var still = null;
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    function grab(el){
-      try{
-        var c = document.createElement("canvas");
-        c.width = el.naturalWidth || 96;
-        c.height = el.naturalHeight || 56;
-        c.getContext("2d").drawImage(el, 0, 0);
-        return c.toDataURL("image/png");
-      }catch(err){ return null; }
-    }
-    function freeze(){ if(still) img.src = still; }
-    function play(){
-      if(reduce) return;
-      img.src = live + "?t=" + Date.now();
-    }
-    function ready(){ img.setAttribute("data-ready","1"); }
-    var probe = new Image();
-    probe.onload = function(){
-      still = grab(probe);
-      if(still) img.src = still;
-      ready();
-      if(reduce) return;
-      btn.addEventListener("pointerenter", play);
-      btn.addEventListener("pointerleave", freeze);
-      btn.addEventListener("focus", play);
-      btn.addEventListener("blur", freeze);
-    };
-    probe.onerror = ready;
-    probe.src = live;
-  })();
   renderPicker(); renderFulfil();
   show("home");
   setTimeout(drawRing, 60);
