@@ -217,7 +217,9 @@ a.btn{text-decoration:none}
              color .45s cubic-bezier(.785,.135,.15,.86),
              border-color .45s cubic-bezier(.785,.135,.15,.86),
              transform var(--spring-swift-ms) var(--spring-swift)}
-.btn:not(.link):not(.ghost)::before{content:""; width:0; height:0; flex:none;
+.btn:not(.link):not(.ghost)::before,
+.chev::before,
+.tiers summary::before{content:""; width:0; height:0; flex:none;
   border-style:solid; border-width:.38em 0 .38em .55em;
   border-color:transparent transparent transparent currentColor}
 @media (pointer:fine) and (prefers-reduced-motion:no-preference){
@@ -317,10 +319,7 @@ a.btn{text-decoration:none}
   font-size:var(--t-sm); color:var(--ink); justify-self:start}
 .symcard[data-on="1"] .symmain .symprice{color:var(--ink)}
 .symmain .chev{grid-column:2; grid-row:1 / -1; color:var(--mint-ink); display:grid;
-  place-items:center; line-height:0; align-self:center;
-  transform-origin:center; transition:transform .18s ease}
-.symmain .chev svg{display:block; width:22px; height:22px}
-.symcard[data-open="1"] .symmain .chev{transform:rotate(180deg)}
+  place-items:center; line-height:0; align-self:center; width:22px; height:22px}
 .symcard{border-radius:var(--radius)}
 .symcard[data-open="1"]{position:relative; z-index:2; background:var(--fill-2); border-color:var(--line-2)}
 .symcard[data-open="1"][data-on="1"]{background:var(--mint); border-color:var(--mint-ink)}
@@ -356,7 +355,7 @@ a.btn{text-decoration:none}
 .solalts{display:grid; gap:var(--s2)}
 .solalt{position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:var(--frame);
   box-shadow:var(--lift); padding:var(--s2) var(--s3); display:grid; gap:var(--s1);
-  transition:transform var(--spring-swift-ms) var(--spring-swift), border-color var(--press-color), box-shadow var(--press-color)}
+  cursor:default}
 .solalt .n{font-weight:var(--w-semi); font-size:var(--t-sm); line-height:1.35;
   display:flex; justify-content:space-between; gap:var(--s3); align-items:baseline}
 .solalt .n em{font-style:normal; font-family:"IBM Plex Mono",monospace;
@@ -395,7 +394,15 @@ a.btn{text-decoration:none}
 .crumb .here{color:var(--ink); font-weight:var(--w-bold)}
 
 .tiers{border:1px solid var(--line); border-radius:var(--radius); padding:var(--s3) var(--s4); background:var(--frame)}
-.tiers summary{cursor:pointer; font-size:var(--t-body); font-weight:var(--w-bold); color:var(--ink)}
+.tiers summary{cursor:pointer; font-size:var(--t-body); font-weight:var(--w-bold); color:var(--ink);
+  display:flex; align-items:center; gap:var(--s2); list-style:none}
+.tiers summary::-webkit-details-marker{display:none}
+.tiers summary::marker{content:""}
+.chev::before,
+.tiers summary::before{transform:rotate(90deg); transform-origin:center;
+  transition:transform .18s ease}
+.symcard[data-open="1"] .chev::before,
+.tiers[open] summary::before{transform:rotate(-90deg)}
 .tiers summary:hover{color:var(--ink-2)}
 .sol-panel .tiers{padding:var(--s2) var(--s3); margin-top:var(--s2)}
 .sol-panel .tiers summary{font-size:var(--t-sm)}
@@ -833,7 +840,7 @@ button.card, .specard{
   transition:transform var(--spring-swift-ms) var(--spring-swift),
              background-color var(--press-color), border-color var(--press-color), box-shadow var(--press-color)}
 @media (pointer:fine) and (prefers-reduced-motion:no-preference){
-  .pick:not(.walkin):hover, button.card:hover, .specard:hover, .symcard:hover, .solalt:hover{
+  .pick:not(.walkin):hover, button.card:hover, .specard:hover, .symcard:hover{
     transform:translateY(-4px); box-shadow:var(--hover-lift)}
   .pick[aria-pressed="true"]:hover, .symcard[data-on="1"]:hover{
     border-color:var(--mint-ink); transform:translateY(-2px)}
@@ -2293,7 +2300,7 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
     if(last && last.nextSibling !== more) grid.insertBefore(more, last.nextSibling);
     more.style.setProperty("--col", String(idx % cols));
   }
-  function renderSymptoms(){
+  function renderSymptoms(holdOpen){
     var cols = symCols();
     $("#symptoms").innerHTML = SYMP_CATS.map(function(cat){
       var items = SYMPTOMS.filter(function(s){ return s.cat === cat.id; });
@@ -2306,11 +2313,12 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
         var on = hasSym(s.id);
         var price = r ? formatRange(r.lo, r.hi) : "";
         var isOpen = state.open === s.id;
-        cards += '<div class="symcard" data-for="'+s.id+'"'+(on ? ' data-on="1"' : '')+(isOpen ? ' data-open="1"' : '')+'>'
+        var paintOpen = s.id === holdOpen;
+        cards += '<div class="symcard" data-for="'+s.id+'"'+(on ? ' data-on="1"' : '')+(paintOpen ? ' data-open="1"' : '')+'>'
           + '<button type="button" class="symmain" data-sym="'+s.id+'" '
           +   'aria-expanded="'+isOpen+'">'
           +   '<span class="t">'+esc(s.t)+'</span>'
-          +   '<span class="chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+          +   '<span class="chev" aria-hidden="true"></span>'
           +   (price ? '<span class="symprice">'+esc(price)+'</span>' : "")
           + '</button>'
           + '</div>';
@@ -2513,8 +2521,19 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
   }
   function revealSymMore(box){ revealExpand(box); }
   function openSym(id){
+    var prev = state.open;
     state.open = (state.open === id) ? null : id;
-    renderSymptoms();
+    renderSymptoms(prev && prev !== state.open ? prev : null);
+    requestAnimationFrame(function(){
+      if(prev && prev !== state.open){
+        var old = document.querySelector('.symcard[data-for="'+prev+'"]');
+        if(old) old.removeAttribute("data-open");
+      }
+      var neu = state.open && document.querySelector('.symcard[data-for="'+state.open+'"]');
+      if(neu){
+        requestAnimationFrame(function(){ neu.setAttribute("data-open", "1"); });
+      }
+    });
     if(state.open === id){
       var box = document.querySelector('[data-more="'+id+'"]');
       if(box){
