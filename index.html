@@ -799,16 +799,15 @@ tr.hl td{background:var(--acc-soft)}
 .spechead{display:grid; gap:var(--s3)}
 .specrail{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--s3)}
 .specard{position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--line); padding:0;
-  width:100%; aspect-ratio:3/4; border-radius:var(--r-xl); background:var(--frame);
+  width:100%; aspect-ratio:3/5; border-radius:var(--r-xl); background:var(--frame);
   color:var(--ink); text-align:left; display:flex; flex-direction:column; justify-content:flex-end;
   cursor:pointer}
-.specard img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
-  filter:saturate(.72) brightness(1.28) contrast(.92)}
+.specard img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
 .specard::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.55) 38%, var(--paper) 78%)}
+  background:linear-gradient(180deg, transparent 0%, rgba(255,255,255,.16) 36%, var(--paper) 52%)}
 .specard-copy{position:relative; z-index:2; display:grid;
   grid-template-rows:calc(var(--t-lg) * 1.2 * 2) 1fr auto; gap:var(--s1);
-  padding:var(--s4); height:58%; min-height:58%; box-sizing:border-box;
+  padding:var(--s4); height:48%; min-height:48%; box-sizing:border-box;
   align-content:stretch; align-items:stretch}
 .specard h4{font-size:var(--t-lg); font-weight:var(--w-black); color:var(--ink); letter-spacing:-.02em; line-height:1.2;
   min-height:calc(var(--t-lg) * 1.2 * 2);
