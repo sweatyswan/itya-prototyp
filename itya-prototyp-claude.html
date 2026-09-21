@@ -116,14 +116,37 @@ button .ph, a .ph{cursor:pointer}
 .sitehead :focus-visible{outline-color:var(--head-ink)}
 .logo{height:auto; width:auto; display:block; flex:none; padding:0; margin:0 var(--s4) 0 0;
   border:0; background:none; line-height:0; cursor:pointer; color:#fff}
-.logo img{height:36px; width:auto; display:block; pointer-events:none;
-  filter:brightness(0) invert(1)}
+.logo svg, .logo img{height:36px; width:auto; display:block; pointer-events:none}
 .sitenav{display:flex; gap:var(--s4); flex-wrap:wrap; flex:1; align-items:center}
 .sitenav button{background:none; border:0; padding:0; min-height:36px; font-size:var(--t-body); color:var(--head-ink)}
 .sitenav button:hover{color:var(--head-ink); box-shadow:inset 0 -2px 0 var(--mint)}
 .sitenav button[data-on]{color:var(--head-ink); font-weight:var(--w-bold); box-shadow:inset 0 -2px 0 var(--mint)}
 .sitenav button.off{color:rgba(255,255,255,.88); cursor:default; pointer-events:none; opacity:1; box-shadow:none}
 .sitenav button.off:hover{color:rgba(255,255,255,.88); box-shadow:none}
+
+/* mäťová hlavička: pozadie #85EEDD, logo #775AC5; text/čipy mint-ink, lebo fialová na mäťe má 3,8:1 */
+body.head-mint .sitehead{background:var(--mint); color:var(--mint-ink)}
+body.head-mint .sitehead :focus-visible{outline-color:var(--mint-ink)}
+body.head-mint .logo{color:var(--head)}
+body.head-mint .sitenav button,
+body.head-mint .sitenav button:hover,
+body.head-mint .sitenav button[data-on]{color:var(--mint-ink)}
+body.head-mint .sitenav button:hover,
+body.head-mint .sitenav button[data-on]{box-shadow:inset 0 -2px 0 var(--head)}
+body.head-mint .sitenav button.off,
+body.head-mint .sitenav button.off:hover{color:var(--mint-ink); box-shadow:none}
+body.head-mint .telchip{background:rgba(10,92,84,.14); color:var(--mint-ink)}
+body.head-mint .telchip b,
+body.head-mint .telchip small{color:var(--mint-ink)}
+body.head-mint .headpin{background:var(--head); color:#fff}
+body.head-mint .headpin:hover{background:#5E45A8; color:#fff}
+body.head-mint .headpin{
+  animation-name:breathMint}
+@keyframes breathMint{
+  0%, 100%{transform:scale(1); box-shadow:0 0 0 0 rgba(119,90,197,0)}
+  50%{transform:scale(1.035); box-shadow:0 0 0 6px rgba(119,90,197,.28)}
+}
+body.head-mint .bagbtn{color:var(--mint-ink)}
 
 .outpage{min-height:52vh; display:grid; place-content:center; justify-items:center;
   text-align:center; gap:var(--s3); max-width:38rem; margin-inline:auto; padding:var(--s7) var(--s4) var(--s7)}
@@ -836,7 +859,7 @@ button.card:active, .specard:active{transform:scale(.97)}
     align-items:center; gap:var(--s1) var(--s2);
     padding:.55rem max(var(--screen-pad), env(safe-area-inset-right,0px)) .55rem max(var(--screen-pad), env(safe-area-inset-left,0px))}
   .logo{height:auto; grid-area:logo; margin-right:0}
-  .logo img{height:28px}
+  .logo svg, .logo img{height:28px}
   .headutil{grid-area:util; justify-self:end; gap:var(--s2); margin-left:0}
   .sitenav{grid-area:nav; gap:var(--s1) var(--s3)}
   .sitenav button{min-height:44px; padding:var(--s1) 0}
@@ -957,6 +980,7 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
   <div class="bar-in">
     <nav class="nav" id="nav" hidden></nav>
     <button class="toggle" id="resetBtn">Reset</button>
+    <button class="toggle" id="mintHeadBtn" aria-pressed="false">Mäta</button>
     <button class="toggle" id="notesBtn" aria-pressed="false">Poznámky</button>
   </div>
 </div>
@@ -982,7 +1006,13 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
     <div class="sitehead">
       <div class="sitehead-in">
       <button type="button" class="logo" data-go="home" aria-label="itya, úvodná stránka">
-        <img src="itya-mark.svg" alt="" width="1080" height="509">
+        <svg width="1080" height="509" viewBox="0 0 1080 509.397" fill="none" aria-hidden="true">
+          <path d="M0 426.569H99.8144V93.7744L0 176.94V426.504V426.569Z" fill="currentColor"/>
+          <path d="M99.8144 0H0V93.765H99.8144V0Z" fill="currentColor"/>
+          <path d="M382.807 176.281L341.78 93.765H292.168V0H202.971L192.354 93.765H134.484V176.281H192.354V305.029C192.354 335.395 197.466 359.389 207.69 377.011C217.914 394.632 232.332 407.247 250.945 414.985C269.558 422.723 290.857 426.559 314.844 426.559H377.368V342.678H332.081C317.4 342.678 307.111 339.947 301.147 334.42C295.183 328.893 292.168 319.594 292.168 306.329V176.281H382.807Z" fill="currentColor"/>
+          <path d="M659.837 93.7622L582.633 295.793L490.159 93.7622H381.693L517.488 389.558H537.477L481.639 509.397H587.417L766.402 93.6972H659.902L659.837 93.7622Z" fill="currentColor"/>
+          <path d="M993.621 93.0576V117.897C967.93 102.161 937.717 93.0576 905.276 93.0576C812.474 93.0576 737.171 167.705 737.171 259.845C737.171 351.984 812.408 426.632 905.276 426.632C937.651 426.632 967.93 417.529 993.621 401.793V426.632H1080V93.0576H993.621ZM905.341 327.21C867.919 327.21 837.444 296.974 837.444 259.845C837.444 222.716 867.919 192.48 905.341 192.48C942.763 192.48 973.239 222.716 973.239 259.845C973.239 296.974 942.763 327.21 905.341 327.21Z" fill="currentColor"/>
+        </svg>
       </button>
       <nav class="sitenav" id="sitenav">
         <button data-nav="servis" data-channel="choose" data-go="picker">Servis</button>
@@ -3541,6 +3571,12 @@ p{font-size:var(--t-body); line-height:var(--lh-body)}
     notesBtn.setAttribute("aria-pressed", on ? "false":"true");
     document.body.classList.toggle("notes", !on);
     requestAnimationFrame(drawRing);
+  });
+  var mintHeadBtn = $("#mintHeadBtn");
+  mintHeadBtn.addEventListener("click", function(){
+    var on = mintHeadBtn.getAttribute("aria-pressed") === "true";
+    mintHeadBtn.setAttribute("aria-pressed", on ? "false":"true");
+    document.body.classList.toggle("head-mint", !on);
   });
   $("#resetBtn").addEventListener("click", function(){
     state = JSON.parse(JSON.stringify(DEFAULT));
